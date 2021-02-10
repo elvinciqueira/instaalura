@@ -1,20 +1,7 @@
+import React from 'react'
 import {MenuWrapper} from './styles/MenuWrapper'
 import {Logo} from '../../../theme/Logo'
-
-const links = [
-  {
-    name: 'Home',
-    url: '/',
-  },
-  {
-    name: 'Perguntas Frequentes',
-    url: '/faq',
-  },
-  {
-    name: 'sobre',
-    url: '/sobre',
-  },
-]
+import {Button} from '../Button'
 
 export default function Menu() {
   return (
@@ -23,13 +10,24 @@ export default function Menu() {
         <Logo />
       </MenuWrapper.LeftSide>
       <MenuWrapper.CentralSide>
-        {links.map(({name, url}) => (
-          <li key={url}>
-            <a href={url}>{name}</a>
+        {[
+          {url: '/', name: 'Home'},
+          {url: '/faq', name: 'Perguntas Frequentes'},
+          {url: '/sobre', name: 'Sobre'},
+        ].map((link) => (
+          <li key={link.url}>
+            <a href={link.url}>{link.name}</a>
           </li>
         ))}
       </MenuWrapper.CentralSide>
-      <MenuWrapper.RightSide>Area dos botoes(Direita)</MenuWrapper.RightSide>
+      <MenuWrapper.RightSide>
+        <Button type="button" ghost variant="secondary.main">
+          Entrar
+        </Button>
+        <Button type="button" variant="primary.main">
+          Cadastrar
+        </Button>
+      </MenuWrapper.RightSide>
     </MenuWrapper>
   )
 }
