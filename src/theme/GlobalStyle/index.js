@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     min-height: 100vh;
     width: 100%;
-  }
+  } 
   #__next {
     flex: 1;
     display: flex;

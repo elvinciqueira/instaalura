@@ -2,6 +2,7 @@ import React from 'react'
 import {MenuWrapper} from './styles/MenuWrapper'
 import {Logo} from '../../../theme/Logo'
 import {Button} from '../Button'
+import Typography from '../../foundation/Typography'
 
 export default function Menu() {
   return (
@@ -14,9 +15,11 @@ export default function Menu() {
           {url: '/', name: 'Home'},
           {url: '/faq', name: 'Perguntas Frequentes'},
           {url: '/sobre', name: 'Sobre'},
-        ].map((link) => (
-          <li key={link.url}>
-            <a href={link.url}>{link.name}</a>
+        ].map(({url, name}) => (
+          <li key={url}>
+            <Typography variant="smallestException" tag="a" href={url}>
+              {name}
+            </Typography>
           </li>
         ))}
       </MenuWrapper.CentralSide>

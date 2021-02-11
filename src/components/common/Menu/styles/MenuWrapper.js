@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components'
 // import {TextStyleVariants} from '../../../foundation/Text'
 
 export const MenuWrapper = styled.nav`
-  font-family: 'Rubik', sans-serif;
+  font-family: ${({theme}) => theme.fontFamily};
   display: flex;
   align-items: center;
   justify-content: space-between;
