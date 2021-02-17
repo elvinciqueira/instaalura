@@ -78,10 +78,7 @@ MenuWrapper.CentralSide = styled.div`
     text-align: center;
     display: block;
     text-decoration: none;
-    color: ${({theme}) =>
-      theme.currentTheme === 'light'
-        ? theme.colors.tertiary.light.color
-        : theme.colors.tertiary.main.color};
+
     transition: 200ms ease-in-out;
     ${breakPointsMedia({
       xs: css`
@@ -94,10 +91,6 @@ MenuWrapper.CentralSide = styled.div`
     &:hover,
     &:focus {
       font-weight: 500;
-      color: ${({theme}) =>
-        theme.currentTheme === 'light'
-          ? theme.colors.tertiary.light.color
-          : theme.colors.secondary.main.color};
     }
   }
 `

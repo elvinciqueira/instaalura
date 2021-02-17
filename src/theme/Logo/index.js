@@ -100,7 +100,7 @@ const LightLogo = function () {
 }
 
 export function Logo() {
-  const {theme} = useTheme()
+  const {currentMode} = useTheme()
 
-  return theme.currentTheme === 'dark' ? <DarkLogo /> : <LightLogo />
+  return currentMode === 'dark' ? <DarkLogo /> : <LightLogo />
 }

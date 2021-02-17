@@ -9,7 +9,7 @@ import {BrightnessDarkIcon} from '../../../theme/Icons/BrightnessDarkIcon'
 import {useTheme} from '../../../hooks/theme'
 
 export default function Menu() {
-  const {toggleTheme, theme} = useTheme()
+  const {toggleTheme, currentMode} = useTheme()
 
   const handleToggleTheme = () => toggleTheme()
 
@@ -38,7 +38,7 @@ export default function Menu() {
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
         <IconButton onClick={handleToggleTheme}>
-          {theme.currentTheme === 'light' ? (
+          {currentMode === 'light' ? (
             <BrightnessLightIcon />
           ) : (
             <BrightnessDarkIcon />

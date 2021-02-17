@@ -14,12 +14,7 @@ const FooterWrapper = styled.footer`
     margin-right: 23px;
   }
 
-  p {
-    color: ${({theme}) => theme.colors.tertiary.light.color};
-  }
-
   a {
-    color: ${({theme}) => theme.colors.primary.main.color};
     text-decoration: none;
     transition: 0.3s;
     &:hover,

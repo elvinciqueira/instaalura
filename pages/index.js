@@ -8,7 +8,7 @@ import Bubbles from '../src/theme/Bubbles'
 import {useTheme} from '../src/hooks/theme'
 
 export default function Home() {
-  const {theme} = useTheme()
+  const {currentMode} = useTheme()
 
   return (
     <Box
@@ -17,7 +17,7 @@ export default function Home() {
       flexWrap="wrap"
       flexDirection="column"
       justifyContent="space-between"
-      backgroundImage={`url(${Bubbles.url(theme.currentTheme)})`}
+      backgroundImage={`url(${Bubbles.url(currentMode)})`}
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
