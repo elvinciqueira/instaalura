@@ -1,5 +1,5 @@
 import React from 'react'
-import {useContext} from '../../../pages/_app'
+import {useTheme} from '../../hooks/theme'
 
 const DarkLogo = function () {
   return (
@@ -100,7 +100,7 @@ const LightLogo = function () {
 }
 
 export function Logo() {
-  const {theme} = useContext()
+  const {theme} = useTheme()
 
   return theme.currentTheme === 'dark' ? <DarkLogo /> : <LightLogo />
 }

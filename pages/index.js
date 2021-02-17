@@ -5,10 +5,10 @@ import {Box} from '../src/components/foundation/layout/Box'
 import {Grid} from '../src/components/foundation/layout/Grid'
 import Typography from '../src/components/foundation/Typography'
 import Bubbles from '../src/theme/Bubbles'
-import {useContext} from './_app'
+import {useTheme} from '../src/hooks/theme'
 
 export default function Home() {
-  const {theme} = useContext()
+  const {theme} = useTheme()
 
   return (
     <Box

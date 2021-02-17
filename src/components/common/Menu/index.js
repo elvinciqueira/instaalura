@@ -6,26 +6,12 @@ import {IconButton} from '../IconButton'
 import Typography from '../../foundation/Typography'
 import {BrightnessLightIcon} from '../../../theme/Icons/BrightnessLightIcon'
 import {BrightnessDarkIcon} from '../../../theme/Icons/BrightnessDarkIcon'
-import {useContext} from '../../../../pages/_app'
+import {useTheme} from '../../../hooks/theme'
 
 export default function Menu() {
-  const {setCurrentMode, theme} = useContext()
+  const {toggleTheme, theme} = useTheme()
 
-  const handleToggleTheme = () => {
-    if (theme.currentTheme === 'light') {
-      setCurrentMode((currentMode) => ({
-        ...currentMode,
-        colors: theme.modes.dark,
-        currentTheme: 'dark',
-      }))
-    } else {
-      setCurrentMode((currentMode) => ({
-        ...currentMode,
-        colors: theme.modes.light,
-        currentTheme: 'light',
-      }))
-    }
-  }
+  const handleToggleTheme = () => toggleTheme()
 
   return (
     <MenuWrapper>
@@ -39,7 +25,12 @@ export default function Menu() {
           {url: '/sobre', name: 'Sobre'},
         ].map(({url, name}) => (
           <li key={url}>
-            <Typography variant="smallestException" tag="a" href={url}>
+            <Typography
+              color="tertiary.light"
+              variant="smallestException"
+              tag="a"
+              href={url}
+            >
               {name}
             </Typography>
           </li>
