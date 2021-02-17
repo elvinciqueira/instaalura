@@ -20,9 +20,18 @@ const smallestException = css`
   `}
 `
 
+const title = css`
+  ${({theme}) => css`
+    font-size: ${theme.typographyVariants.title.fontSize};
+    font-weight: ${theme.typographyVariants.title.fontWeight};
+    line-height: ${theme.typographyVariants.title.lineHeight};
+  `}
+`
+
 export const TextStyleVariants = {
   smallestException,
   paragraph1,
+  title,
 }
 
 const TextBase = styled.span`
@@ -47,5 +56,5 @@ Typography.defaultProps = {
 Typography.propTypes = {
   children: PropTypes.node.isRequired,
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
-  variant: PropTypes.oneOf(['paragraph1', 'smallestException']),
+  variant: PropTypes.oneOf(['paragraph1', 'smallestException', 'title']),
 }

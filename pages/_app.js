@@ -1,10 +1,25 @@
+import React, {useState} from 'react'
 import {ThemeProvider} from 'styled-components'
 import theme from '../src/theme'
 import GlobalStyle from '../src/theme/GlobalStyle'
-
 import Head from 'next/head'
 
+const ThemeContext = React.createContext()
+
+function useContext() {
+  const context = React.useContext(ThemeContext)
+
+  return context
+}
+
 export default function App({Component, pageProps}) {
+  const [currentMode, setCurrentMode] = React.useState({
+    ...theme,
+    currentTheme: 'light',
+  })
+
+  console.log('theme', currentMode)
+
   return (
     <>
       <Head>
@@ -14,10 +29,14 @@ export default function App({Component, pageProps}) {
           rel="stylesheet"
         />
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={currentMode}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <ThemeContext.Provider value={{setCurrentMode, theme: currentMode}}>
+          <Component {...pageProps} />
+        </ThemeContext.Provider>
       </ThemeProvider>
     </>
   )
 }
+
+export {useContext}

@@ -103,6 +103,7 @@ MenuWrapper.RightSide = styled.div`
   flex: 1;
   order: 2;
   justify-content: flex-end;
+  align-items: center;
   ${breakPointsMedia({
     md: css`
       order: initial;

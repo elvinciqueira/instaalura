@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
   ${normalize}
   html,
   body {
+    background-color: ${({theme}) => theme.colors.background.main.color};
     margin: 0;
     padding: 0;
     font-family: ${({theme}) => theme.fontFamily};
