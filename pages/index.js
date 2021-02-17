@@ -4,8 +4,12 @@ import Menu from '../src/components/common/Menu'
 import {Box} from '../src/components/foundation/layout/Box'
 import {Grid} from '../src/components/foundation/layout/Grid'
 import Typography from '../src/components/foundation/Typography'
+import Bubbles from '../src/theme/Bubbles'
+import {useContext} from './_app'
 
 export default function Home() {
+  const {theme} = useContext()
+
   return (
     <Box
       flex={1}
@@ -13,7 +17,7 @@ export default function Home() {
       flexWrap="wrap"
       flexDirection="column"
       justifyContent="space-between"
-      backgroundImage="url(/images/bubble.svg)"
+      backgroundImage={`url(${Bubbles.url(theme.currentTheme)})`}
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
