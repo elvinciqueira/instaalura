@@ -13,6 +13,11 @@ const FooterWrapper = styled.footer`
     width: 58px;
     margin-right: 23px;
   }
+
+  p {
+    color: ${({theme}) => theme.colors.tertiary.light.color};
+  }
+
   a {
     color: ${({theme}) => theme.colors.primary.main.color};
     text-decoration: none;

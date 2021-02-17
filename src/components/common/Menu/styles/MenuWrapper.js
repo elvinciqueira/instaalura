@@ -96,7 +96,7 @@ MenuWrapper.CentralSide = styled.div`
       font-weight: 500;
       color: ${({theme}) =>
         theme.currentTheme === 'light'
-          ? theme.colors.tertiary.main.color
+          ? theme.colors.tertiary.light.color
           : theme.colors.secondary.main.color};
     }
   }
