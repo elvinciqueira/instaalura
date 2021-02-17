@@ -11,7 +11,7 @@ import {useContext} from '../../../../pages/_app'
 export default function Menu() {
   const {setCurrentMode, theme} = useContext()
 
-  const handleChangeTheme = () => {
+  const handleToggleTheme = () => {
     if (theme.currentTheme === 'light') {
       setCurrentMode((currentMode) => ({
         ...currentMode,
@@ -46,7 +46,7 @@ export default function Menu() {
         ))}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <IconButton onClick={handleChangeTheme}>
+        <IconButton onClick={handleToggleTheme}>
           {theme.currentTheme === 'light' ? (
             <BrightnessLightIcon />
           ) : (

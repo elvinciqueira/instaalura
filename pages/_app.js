@@ -18,8 +18,6 @@ export default function App({Component, pageProps}) {
     currentTheme: 'light',
   })
 
-  console.log('theme', currentMode)
-
   return (
     <>
       <Head>
