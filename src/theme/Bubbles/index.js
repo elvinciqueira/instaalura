@@ -14,13 +14,13 @@ export default function Bubbles({mode}) {
         cx="275.5"
         cy="463.5"
         r="261.5"
-        fill={mode === 'light' ? '#F2F2F2' : '#88989E'}
+        fill={mode === 'light' ? '#F2F2F2' : '#181F22'}
       />
       <circle
         cx="374"
         cy="277"
         r="213"
-        fill={mode === 'light' ? '#F2F2F2' : '#88989E'}
+        fill={mode === 'light' ? '#F2F2F2' : '#181F22'}
         stroke={mode === 'light' ? 'white' : '#030506'}
         stroke-width="64"
       />
@@ -28,7 +28,7 @@ export default function Bubbles({mode}) {
         cx="170"
         cy="170"
         r="138"
-        fill={mode === 'light' ? '#F2F2F2' : '#88989E'}
+        fill={mode === 'light' ? '#F2F2F2' : '#181F22'}
         stroke={mode === 'light' ? 'white' : '#030506'}
         stroke-width="64"
       />
