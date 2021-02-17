@@ -3,10 +3,10 @@ import typographyVariants from './typographyVariants'
 export const colors = {
   background: {
     light: {
-      color: '#FFFFFF',
+      color: '#F2F2F2',
     },
     main: {
-      color: '#F2F2F2',
+      color: '#fff',
     },
   },
   borders: {
@@ -112,7 +112,7 @@ export default {
       },
       secondary: {
         main: {
-          color: '#FFA59A',
+          color: '#FB7B6B',
           contrastText: '#fff',
         },
       },

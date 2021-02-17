@@ -1,10 +1,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import {colors} from '../index'
 
 export default function Bubbles({mode}) {
-  console.log('mode', mode)
-
   return (
     <svg
       width="459"
