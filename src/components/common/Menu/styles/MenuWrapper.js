@@ -78,7 +78,6 @@ MenuWrapper.CentralSide = styled.div`
     text-align: center;
     display: block;
     text-decoration: none;
-
     transition: 200ms ease-in-out;
     ${breakPointsMedia({
       xs: css`
@@ -91,6 +90,10 @@ MenuWrapper.CentralSide = styled.div`
     &:hover,
     &:focus {
       font-weight: 500;
+      color: ${({theme}) =>
+        theme.mode === 'light'
+          ? theme.colors.modes.dark.tertiary.main.contrastText
+          : theme.colors.modes.light.secondary.main.color};
     }
   }
 `

@@ -26,7 +26,9 @@ export default function Menu() {
         ].map(({url, name}) => (
           <li key={url}>
             <Typography
-              color="tertiary.light"
+              color={
+                currentMode === 'light' ? 'tertiary.light' : 'tertiary.main'
+              }
               variant="smallestException"
               tag="a"
               href={url}

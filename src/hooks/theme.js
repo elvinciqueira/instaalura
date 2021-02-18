@@ -1,14 +1,19 @@
-import React, {useCallback} from 'react'
+import React, {useCallback, createContext, useState, useContext} from 'react'
 import {ThemeProvider as StyleComponentsThemeProvider} from 'styled-components'
 import theme from '../theme'
 
-const ThemeContext = React.createContext()
+const ThemeContext = createContext()
 
 const ThemeProvider = ({children}) => {
-  const [currentMode, setCurrentMode] = React.useState('light')
+  const [currentMode, setCurrentMode] = useState('light')
 
-  const toggleTheme = () =>
-    setCurrentMode(currentMode === 'light' ? 'dark' : 'light')
+  const toggleTheme = useCallback(
+    () =>
+      setCurrentMode((currentMode) =>
+        currentMode === 'light' ? 'dark' : 'light',
+      ),
+    [],
+  )
 
   return (
     <StyleComponentsThemeProvider theme={{...theme, mode: currentMode}}>
@@ -20,7 +25,7 @@ const ThemeProvider = ({children}) => {
 }
 
 function useTheme() {
-  const context = React.useContext(ThemeContext)
+  const context = useContext(ThemeContext)
 
   return context
 }
