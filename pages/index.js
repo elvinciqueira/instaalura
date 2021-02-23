@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import {Button} from '../src/components/common/Button'
 import Footer from '../src/components/common/Footer'
 import Menu from '../src/components/common/Menu'
@@ -6,9 +7,15 @@ import {Grid} from '../src/components/foundation/layout/Grid'
 import Typography from '../src/components/foundation/Typography'
 import Bubbles from '../src/theme/Bubbles'
 import {useTheme} from '../src/hooks/theme'
+import Modal from '../src/components/common/Modal'
 
 export default function Home() {
   const {currentMode} = useTheme()
+  const [isModalOpen, setModalState] = useState(false)
+
+  const handleOpenModal = () => setModalState(!isModalOpen)
+
+  const handleOnClose = () => setModalState(false)
 
   return (
     <Box
@@ -21,6 +28,18 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
+      <Modal isOpen={isModalOpen} onClose={handleOnClose}>
+        {(propsDoModal) => (
+          <Box
+            backgroundColor="white"
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...propsDoModal}
+          >
+            <div>Nosso conteúdo pro modal</div>
+          </Box>
+        )}
+      </Modal>
+
       <Menu />
 
       <Grid.Container marginTop={{xs: '32px', md: '32px'}}>
@@ -66,6 +85,7 @@ export default function Home() {
                   md: 'initial',
                 }}
                 display="block"
+                onClick={handleOpenModal}
               >
                 Cadastrar
               </Button>
