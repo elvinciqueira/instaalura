@@ -28,10 +28,19 @@ const title = css`
   `}
 `
 
+const titleXS = css`
+  ${({theme}) => css`
+    font-size: ${theme.typographyVariants.titleXS.fontSize};
+    font-weight: ${theme.typographyVariants.titleXS.fontWeight};
+    line-height: ${theme.typographyVariants.titleXS.lineHeight};
+  `}
+`
+
 export const TextStyleVariants = {
   smallestException,
   paragraph1,
   title,
+  titleXS,
 }
 
 const TextBase = styled.span`
@@ -52,10 +61,11 @@ export default function Typography({tag, variant, children, ...rest}) {
 Typography.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
+  children: null,
 }
 
 Typography.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
   variant: PropTypes.oneOf(['paragraph1', 'smallestException', 'title']),
 }

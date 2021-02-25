@@ -8,6 +8,7 @@ import Typography from '../src/components/foundation/Typography'
 import Bubbles from '../src/theme/Bubbles'
 import {useTheme} from '../src/hooks/theme'
 import Modal from '../src/components/common/Modal'
+import FormCadastro from '../src/components/patterns/FormCadastro'
 
 export default function Home() {
   const {currentMode} = useTheme()
@@ -29,15 +30,7 @@ export default function Home() {
       backgroundPosition="bottom right"
     >
       <Modal isOpen={isModalOpen} onClose={handleOnClose}>
-        {(propsDoModal) => (
-          <Box
-            backgroundColor="white"
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...propsDoModal}
-          >
-            <div>Nosso conteúdo pro modal</div>
-          </Box>
-        )}
+        {(propsDoModal) => <FormCadastro propsDoModal={propsDoModal} />}
       </Modal>
 
       <Menu />

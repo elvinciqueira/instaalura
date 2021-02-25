@@ -5,7 +5,7 @@ export const colors = {
     light: {
       background: {
         light: {
-          color: '#F2F2F2',
+          color: '#FFF',
         },
         main: {
           color: '#fff',
@@ -42,7 +42,7 @@ export const colors = {
     dark: {
       background: {
         light: {
-          color: '#1f1f1f',
+          color: '#181F22',
         },
         main: {
           color: '#030506',
