@@ -5,31 +5,19 @@ import Typography from '../../foundation/Typography'
 import TextField from '../../forms/TextField'
 import {Button} from '../../common/Button'
 import {useTheme} from '../../../hooks/theme'
+import useForm from '../../../hooks/useForm'
 
 function FormContent() {
-  const [userInfo, setUserInfo] = useState({
-    email: '',
-    usuario: '',
-  })
+  const {handleChange, handleSubmit, values} = useForm(register)
 
-  function handleChange(event) {
-    const fieldName = event.target.getAttribute('name')
-
-    setUserInfo({
-      ...userInfo,
-      [fieldName]: event.target.value,
-    })
+  function register() {
+    console.log(values)
   }
 
-  const isFormValid =
-    userInfo.usuario.length === 0 || userInfo.email.length === 0
+  const isFormValid = values.usuario.length === 0 || values.email.length === 0
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault()
-      }}
-    >
+    <form onSubmit={handleSubmit}>
       <div>
         <Typography variant="title" tag="h1" color="tertiary.main">
           Pronto para saber da vida dos outros?
@@ -47,7 +35,7 @@ function FormContent() {
         <TextField
           type="email"
           name="email"
-          value={userInfo.email}
+          value={values.email}
           placeholder="E-mail"
           onChange={handleChange}
         />
@@ -56,7 +44,7 @@ function FormContent() {
         <TextField
           type="text"
           name="usuario"
-          value={userInfo.usuario}
+          value={values.usuario}
           placeholder="Usuário"
           onChange={handleChange}
         />
