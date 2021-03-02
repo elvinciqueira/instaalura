@@ -2,8 +2,8 @@ import {useState} from 'react'
 
 const useForm = (callback) => {
   const [values, setValues] = useState({
-    email: '',
-    usuario: '',
+    username: '',
+    name: '',
   })
 
   const handleSubmit = (event) => {

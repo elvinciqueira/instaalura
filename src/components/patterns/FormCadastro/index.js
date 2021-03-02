@@ -1,20 +1,66 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Grid} from '../../foundation/layout/Grid'
 import {Box} from '../../foundation/layout/Box'
+import {Lottie} from '@crello/react-lottie'
 import Typography from '../../foundation/Typography'
 import TextField from '../../forms/TextField'
 import {Button} from '../../common/Button'
 import {useTheme} from '../../../hooks/theme'
 import useForm from '../../../hooks/useForm'
+import errorAnimation from './animations/error.json'
+import successAnimation from './animations/success.json'
+
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+}
 
 function FormContent() {
   const {handleChange, handleSubmit, values} = useForm(register)
+  const [isFormSubmited, setIsFormSubmited] = React.useState(false)
+  const [submissionStatus, setSubmitionStatus] = React.useState(
+    formStates.DEFAULT,
+  )
 
   function register() {
-    console.log(values)
+    const {username, name} = values
+
+    setIsFormSubmited(true)
+
+    const userDTO = {
+      username,
+      name,
+    }
+
+    fetch('https://instalura-api.vercel.app/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userDTO),
+    })
+      .then((serverResponse) => {
+        if (serverResponse.ok) {
+          return serverResponse.json()
+        }
+
+        throw new Error('Não foi possível cadastrar o usuário agora :(')
+      })
+      .then((responseData) => {
+        setSubmitionStatus(formStates.DONE)
+
+        console.log(responseData)
+      })
+      .catch((error) => {
+        setSubmitionStatus(formStates.ERROR)
+
+        console.log(error)
+      })
   }
 
-  const isFormValid = values.usuario.length === 0 || values.email.length === 0
+  const isFormValid = values.username.length === 0 || values.name.length === 0
 
   return (
     <form onSubmit={handleSubmit}>
@@ -33,19 +79,19 @@ function FormContent() {
         </Typography>
 
         <TextField
-          type="email"
-          name="email"
-          value={values.email}
-          placeholder="E-mail"
+          type="text"
+          name="username"
+          value={values.username}
+          placeholder="Usuário"
           onChange={handleChange}
         />
       </div>
       <div>
         <TextField
           type="text"
-          name="usuario"
-          value={values.usuario}
-          placeholder="Usuário"
+          name="name"
+          value={values.name}
+          placeholder="Nome"
           onChange={handleChange}
         />
       </div>
@@ -58,6 +104,32 @@ function FormContent() {
       >
         Cadastrar
       </Button>
+
+      {isFormSubmited && submissionStatus === formStates.DONE && (
+        <Box display="flex" justifyContent="center" margin="16px 0">
+          <Lottie
+            width="150px"
+            height="150px"
+            config={{
+              animationData: successAnimation,
+              loop: true,
+              autoplay: true,
+            }}
+          />
+          {/* https://lottiefiles.com/43920-success-alert-icon */}
+        </Box>
+      )}
+
+      {isFormSubmited && submissionStatus === formStates.ERROR && (
+        <Box display="flex" justifyContent="center" margin="16px 0">
+          <Lottie
+            width="150px"
+            height="150px"
+            config={{animationData: errorAnimation, loop: true, autoplay: true}}
+          />
+          {/* https://lottiefiles.com/43920-success-alert-icon */}
+        </Box>
+      )}
     </form>
   )
 }
