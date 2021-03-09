@@ -13,6 +13,14 @@ const paragraph1 = css`
   `}
 `
 
+const subTitle = css`
+  ${({theme}) => css`
+    font-size: ${theme.typographyVariants.subTitle.fontSize};
+    font-weight: ${theme.typographyVariants.subTitle.fontWeight};
+    line-height: ${theme.typographyVariants.subTitle.lineHeight};
+  `}
+`
+
 const smallestException = css`
   ${({theme}) => css`
     font-size: ${theme.typographyVariants.smallestException.fontSize};
@@ -42,6 +50,7 @@ export const TextStyleVariants = {
   paragraph1,
   title,
   titleXS,
+  subTitle,
 }
 
 const TextBase = styled.span`
@@ -51,7 +60,7 @@ const TextBase = styled.span`
   ${propToStyle('textAlign')}
 `
 
-export default function Typography({tag, variant, children, href, ...props}) {
+export default function Typography({tag, variant, children, href, ...rest}) {
   if (href) {
     return (
       <TextBase
@@ -59,7 +68,7 @@ export default function Typography({tag, variant, children, href, ...props}) {
         variant={variant}
         href={href}
         // eslint-disable-next-line react/jsx-props-no-spreading
-        {...props}
+        {...rest}
       >
         {children}
       </TextBase>
@@ -67,7 +76,7 @@ export default function Typography({tag, variant, children, href, ...props}) {
   }
 
   return (
-    <TextBase as={tag} variant={variant} {...props}>
+    <TextBase as={tag} variant={variant} {...rest}>
       {children}
     </TextBase>
   )
@@ -95,5 +104,10 @@ Typography.propTypes = {
     'span',
     'input',
   ]),
-  variant: PropTypes.oneOf(['paragraph1', 'smallestException', 'title']),
+  variant: PropTypes.oneOf([
+    'paragraph1',
+    'smallestException',
+    'title',
+    'subTitle',
+  ]),
 }

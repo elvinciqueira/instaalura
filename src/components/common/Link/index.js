@@ -8,7 +8,7 @@ const StyledLink = styled.a`
   color: inherit;
   ${({theme, color}) =>
     color
-      ? `color: ${get(theme, `colors.${color}.color`)}`
+      ? `color: ${get(theme, `colors.modes.${theme.mode}.${color}.color`)}`
       : 'color: inherit;'};
   text-decoration: none;
   opacity: 1;
