@@ -2,6 +2,7 @@ import React from 'react'
 import GlobalStyle from '../src/theme/GlobalStyle'
 import AppProvider from '../src/hooks'
 import Head from 'next/head'
+import {SEO} from '../src/components/common/SEO'
 
 export default function App({Component, pageProps}) {
   return (
@@ -13,6 +14,8 @@ export default function App({Component, pageProps}) {
           rel="stylesheet"
         />
       </Head>
+      <SEO headTitle="Home" />
+
       <AppProvider>
         <GlobalStyle />
         <Component {...pageProps} />
