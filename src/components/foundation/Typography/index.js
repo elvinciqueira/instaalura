@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components'
 import PropTypes from 'prop-types'
 import get from 'lodash/get'
 import {propToStyle} from '../../../theme/utils/propToStyle'
-import {Link} from '../../commons/Link'
+import {Link} from '../../common/Link'
 
 const paragraph1 = css`
   ${({theme}) => css`
@@ -51,7 +51,7 @@ const TextBase = styled.span`
   ${propToStyle('textAlign')}
 `
 
-export default function Typography({tag, variant, children, href, ...rest}) {
+export default function Typography({tag, variant, children, href, ...props}) {
   if (href) {
     return (
       <TextBase
@@ -67,7 +67,7 @@ export default function Typography({tag, variant, children, href, ...rest}) {
   }
 
   return (
-    <TextBase as={tag} variant={variant} {...rest}>
+    <TextBase as={tag} variant={variant} {...props}>
       {children}
     </TextBase>
   )
