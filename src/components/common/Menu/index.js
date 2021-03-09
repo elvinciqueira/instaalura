@@ -41,9 +41,9 @@ export default function Menu() {
       <MenuWrapper.RightSide>
         <IconButton onClick={handleToggleTheme}>
           {currentMode === 'light' ? (
-            <BrightnessLightIcon />
-          ) : (
             <BrightnessDarkIcon />
+          ) : (
+            <BrightnessLightIcon />
           )}
         </IconButton>
         <Button type="button" ghost variant="secondary.main">
