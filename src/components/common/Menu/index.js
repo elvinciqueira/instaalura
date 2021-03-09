@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {MenuWrapper} from './styles/MenuWrapper'
 import {Logo} from '../../../theme/Logo'
 import {Button} from '../Button'
@@ -8,7 +9,7 @@ import {BrightnessLightIcon} from '../../../theme/Icons/BrightnessLightIcon'
 import {BrightnessDarkIcon} from '../../../theme/Icons/BrightnessDarkIcon'
 import {useTheme} from '../../../hooks/theme'
 
-export default function Menu() {
+export default function Menu({onCadastrarClick}) {
   const {toggleTheme, currentMode} = useTheme()
 
   const handleToggleTheme = () => toggleTheme()
@@ -46,13 +47,17 @@ export default function Menu() {
             <BrightnessLightIcon />
           )}
         </IconButton>
-        <Button type="button" ghost variant="secondary.main">
+        <Button type="button" ghost variant="secondary.main" href="/app/login">
           Entrar
         </Button>
-        <Button type="button" variant="primary.main">
+        <Button type="button" variant="primary.main" onClick={onCadastrarClick}>
           Cadastrar
         </Button>
       </MenuWrapper.RightSide>
     </MenuWrapper>
   )
+}
+
+Menu.propTypes = {
+  onCadastrarClick: PropTypes.func.isRequired,
 }

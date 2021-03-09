@@ -3,6 +3,7 @@ import styled, {css} from 'styled-components'
 import PropTypes from 'prop-types'
 import get from 'lodash/get'
 import {propToStyle} from '../../../theme/utils/propToStyle'
+import {Link} from '../../commons/Link'
 
 const paragraph1 = css`
   ${({theme}) => css`
@@ -50,7 +51,21 @@ const TextBase = styled.span`
   ${propToStyle('textAlign')}
 `
 
-export default function Typography({tag, variant, children, ...rest}) {
+export default function Typography({tag, variant, children, href, ...rest}) {
+  if (href) {
+    return (
+      <TextBase
+        as={Link}
+        variant={variant}
+        href={href}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
+      >
+        {children}
+      </TextBase>
+    )
+  }
+
   return (
     <TextBase as={tag} variant={variant} {...rest}>
       {children}
@@ -62,10 +77,12 @@ Typography.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
   children: null,
+  href: '',
 }
 
 Typography.propTypes = {
   children: PropTypes.node,
+  href: PropTypes.string,
   tag: PropTypes.oneOf([
     'h1',
     'h2',
