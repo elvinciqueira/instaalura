@@ -1,40 +1,17 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Button} from '../src/components/common/Button'
-import Footer from '../src/components/common/Footer'
-import Menu from '../src/components/common/Menu'
-import {Box} from '../src/components/foundation/layout/Box'
 import {Grid} from '../src/components/foundation/layout/Grid'
+import {Box} from '../src/components/foundation/layout/Box'
 import Typography from '../src/components/foundation/Typography'
-import Bubbles from '../src/theme/Bubbles'
-import {useTheme} from '../src/hooks/theme'
-import Modal from '../src/components/common/Modal'
-import FormCadastro from '../src/components/patterns/FormCadastro'
+import {WebsitePageContext} from '../src/components/wrappers/WebsitePage'
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc'
 
-export default function Home() {
-  const {currentMode} = useTheme()
-  const [isModalOpen, setModalState] = useState(false)
-
-  const handleOpenModal = () => setModalState(!isModalOpen)
-
-  const handleOnClose = () => setModalState(false)
+function HomeScreen() {
+  const websitePageContext = React.useContext(WebsitePageContext)
+  const handleOpenModal = () => websitePageContext.toggleModalCadastro()
 
   return (
-    <Box
-      flex={1}
-      display="flex"
-      flexWrap="wrap"
-      flexDirection="column"
-      justifyContent="space-between"
-      backgroundImage={`url(${Bubbles.url(currentMode)})`}
-      backgroundRepeat="no-repeat"
-      backgroundPosition="bottom right"
-    >
-      <Modal isOpen={isModalOpen} onClose={handleOnClose}>
-        {(propsDoModal) => <FormCadastro propsDoModal={propsDoModal} />}
-      </Modal>
-
-      <Menu onCadastrarClick={() => setModalState(true)} />
-
+    <Box flex={1} display="flex" justifyContent="column">
       <Grid.Container marginTop={{xs: '32px', md: '32px'}}>
         <Grid.Row>
           <Grid.Col
@@ -92,7 +69,19 @@ export default function Home() {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-      <Footer />
     </Box>
   )
 }
+
+export default websitePageHOC(HomeScreen, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Home',
+    },
+    pageBoxProps: {
+      backgroundImage: `url(images/bubble.svg)`,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
+    },
+  },
+})
