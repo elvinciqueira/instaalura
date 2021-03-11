@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Box} from '../../foundation/layout/Box'
 import Menu from '../../common/Menu'
-import Modal from '../../common/Modal'
 import FormCadastro from '../../patterns/FormCadastro'
 import Footer from '../../common/Footer'
 import SEO from '../../common/SEO'
+import Modal from '../../common/Modal'
 
 export const WebsitePageContext = React.createContext({
   toggleModalCadastro: () => {},

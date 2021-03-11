@@ -13,6 +13,14 @@ const paragraph1 = css`
   `}
 `
 
+const paragraphy2 = css`
+  ${({theme}) => css`
+    font-size: ${theme.typographyVariants.paragraphy2.fontSize};
+    font-weight: ${theme.typographyVariants.paragraphy2.fontWeight};
+    line-height: ${theme.typographyVariants.paragraphy2.lineHeight};
+  `}
+`
+
 const subTitle = css`
   ${({theme}) => css`
     font-size: ${theme.typographyVariants.subTitle.fontSize};
@@ -106,6 +114,7 @@ Typography.propTypes = {
   ]),
   variant: PropTypes.oneOf([
     'paragraph1',
+    'paragraph2',
     'smallestException',
     'title',
     'subTitle',
