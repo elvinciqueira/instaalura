@@ -79,7 +79,7 @@ export default websitePageHOC(HomeScreen, {
       headTitle: 'Home',
     },
     pageBoxProps: {
-      backgroundImage: `url(images/bubble.svg)`,
+      backgroundImageTheme: true,
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'bottom right',
     },
