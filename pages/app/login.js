@@ -1,34 +1,12 @@
 import React from 'react'
-import {Button} from '../../src/components/common/Button'
 import {Link} from '../../src/components/common/Link'
-import TextField from '../../src/components/forms/TextField'
+import LoginForm from '../../src/components/patterns/FormLogin'
 import {Box} from '../../src/components/foundation/layout/Box'
 import {Grid} from '../../src/components/foundation/layout/Grid'
 import Typography from '../../src/components/foundation/Typography'
 import {WebsitePageContext} from '../../src/components/wrappers/WebsitePage'
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc'
 import {Logo} from '../../src/theme/Logo'
-
-function LoginForm() {
-  return (
-    <form id="formCadastro" action="/app/profile">
-      <TextField placeholder="Usuário" name="usuario" />
-      <TextField placeholder="Senha" name="senha" type="password" />
-
-      <Button
-        type="submit"
-        variant="primary.main"
-        margin={{
-          xs: '0 auto',
-          md: 'initial',
-        }}
-        fullWidth
-      >
-        Entrar
-      </Button>
-    </form>
-  )
-}
 
 function LoginScreen() {
   const websitePageContext = React.useContext(WebsitePageContext)
