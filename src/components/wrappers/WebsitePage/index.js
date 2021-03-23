@@ -6,6 +6,7 @@ import FormCadastro from '../../patterns/FormCadastro'
 import Footer from '../../common/Footer'
 import SEO from '../../common/SEO'
 import Modal from '../../common/Modal'
+import {useTheme} from 'styled-components'
 
 export const WebsitePageContext = React.createContext({
   toggleModalCadastro: () => {},

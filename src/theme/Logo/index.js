@@ -1,17 +1,29 @@
 import React from 'react'
 import {useTheme} from 'styled-components'
 
-export function Logo() {
+const sizes = {
+  small: {
+    width: 96,
+    height: 24,
+  },
+  large: {
+    width: 186,
+    height: 46,
+  },
+}
+
+export function Logo({size}) {
   const {
     mode,
     colors: {modes},
   } = useTheme()
   const fill = modes[mode].tertiary.main.color
+  const {width, height} = sizes[size] || sizes.small
 
   return (
     <svg
-      width="96"
-      height="24"
+      width={width}
+      height={height}
       viewBox="0 0 96 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

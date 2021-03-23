@@ -20,17 +20,26 @@ const Input = styled(Typography)`
 Input.defaultProps = {
   tag: 'input',
   variant: 'paragraph1',
+  type: 'text',
 }
 
-export default function TextField({placeholder, name, onChange, value}) {
+export default function TextField({
+  placeholder,
+  name,
+  onChange,
+  value,
+  type,
+  ...props
+}) {
   return (
     <InputWrapper>
       <Input
-        type="text"
+        type={type}
         placeholder={placeholder}
         name={name}
         onChange={onChange}
         value={value}
+        {...props}
       />
     </InputWrapper>
   )

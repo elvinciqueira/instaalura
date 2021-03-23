@@ -15,6 +15,7 @@ const ThemeProvider = ({children}) => {
       setCurrentMode((currentMode) =>
         currentMode === 'light' ? 'dark' : 'light',
       ),
+
     [],
   )
 
