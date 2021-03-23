@@ -1,24 +1,21 @@
 import {useState} from 'react'
 
-const useForm = (callback) => {
-  const [values, setValues] = useState({
-    username: '',
-    name: '',
-  })
+const useForm = ({initialState, onSubmit}) => {
+  const [values, setValues] = useState(initialState)
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
 
-    callback()
+    onSubmit(values)
   }
 
   const handleChange = (event) => {
-    event.persist()
     const fieldName = event.target.getAttribute('name')
+    const {value} = event.target
 
     setValues((values) => ({
       ...values,
-      [fieldName]: event.target.value,
+      [fieldName]: value,
     }))
   }
 

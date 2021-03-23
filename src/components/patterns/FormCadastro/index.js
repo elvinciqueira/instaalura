@@ -5,10 +5,11 @@ import {Lottie} from '@crello/react-lottie'
 import Typography from '../../foundation/Typography'
 import TextField from '../../forms/TextField'
 import {Button} from '../../common/Button'
-import {useTheme} from '../../../hooks/theme'
-import useForm from '../../../hooks/useForm'
+import {useTheme} from '../../../infra/hooks/theme/useTheme'
+import useForm from '../../../infra/hooks/forms/useForm'
 import errorAnimation from './animations/error.json'
 import successAnimation from './animations/success.json'
+import {registerService} from '../../../services/register/registerService'
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -18,45 +19,35 @@ const formStates = {
 }
 
 function FormContent() {
-  const {handleChange, handleSubmit, values} = useForm(register)
+  const initialState = {
+    username: '',
+    name: '',
+  }
+  const {handleChange, handleSubmit, values} = useForm({initialState, onSubmit})
   const [isFormSubmited, setIsFormSubmited] = React.useState(false)
   const [submissionStatus, setSubmitionStatus] = React.useState(
     formStates.DEFAULT,
   )
 
-  function register() {
+  function onSubmit(values) {
     const {username, name} = values
 
     setIsFormSubmited(true)
 
-    const userDTO = {
-      username,
-      name,
-    }
-
-    fetch('https://instalura-api.vercel.app/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userDTO),
-    })
-      .then((serverResponse) => {
-        if (serverResponse.ok) {
-          return serverResponse.json()
-        }
-
-        throw new Error('Não foi possível cadastrar o usuário agora :(')
+    registerService
+      .execute({
+        data: {
+          username,
+          name,
+        },
       })
       .then((responseData) => {
         setSubmitionStatus(formStates.DONE)
 
-        console.log(responseData)
+        console.log('response', responseData)
       })
       .catch((error) => {
         setSubmitionStatus(formStates.ERROR)
-
-        console.log(error)
       })
   }
 

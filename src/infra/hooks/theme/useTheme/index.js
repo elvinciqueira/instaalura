@@ -1,6 +1,6 @@
 import React, {useCallback, createContext, useState, useContext} from 'react'
 import {ThemeProvider as StyleComponentsThemeProvider} from 'styled-components'
-import theme from '../theme'
+import theme from '../../../../theme'
 
 const ThemeContext = createContext({
   toggleTheme: () => {},

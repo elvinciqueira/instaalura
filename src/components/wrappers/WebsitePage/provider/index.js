@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import GlobalStyle from '../../../../theme/GlobalStyle'
-import AppProvider from '../../../../hooks'
+import AppProvider from '../../../../infra/hooks'
 
 export default function WebsiteGlobalProvider({children}) {
   return (

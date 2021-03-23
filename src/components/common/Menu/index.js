@@ -7,7 +7,7 @@ import {IconButton} from '../IconButton'
 import Typography from '../../foundation/Typography'
 import {BrightnessLightIcon} from '../../../theme/Icons/BrightnessLightIcon'
 import {BrightnessDarkIcon} from '../../../theme/Icons/BrightnessDarkIcon'
-import {useTheme} from '../../../hooks/theme'
+import {useTheme} from '../../../infra/hooks/theme/useTheme'
 
 export default function Menu({onCadastrarClick}) {
   const {toggleTheme, currentMode} = useTheme()
