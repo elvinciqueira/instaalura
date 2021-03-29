@@ -24,7 +24,7 @@ const registerSchema = yup.object().shape({
     .string()
     .required('"Usuario" é obrigatório')
     .min(3, 'Preencha ao menos 3 caracteres'),
-  name: yup.string().required('"Nome" é obrigatória'),
+  name: yup.string().required('"Nome" é obrigatório'),
 })
 
 function FormContent() {
@@ -32,7 +32,14 @@ function FormContent() {
     username: '',
     name: '',
   }
-  const {handleChange, handleSubmit, values} = useForm({
+  const {
+    handleChange,
+    handleSubmit,
+    values,
+    errors,
+    handleBlur,
+    touched,
+  } = useForm({
     initialState,
     onSubmit,
     validateSchema,
@@ -94,6 +101,9 @@ function FormContent() {
           value={values.username}
           placeholder="Usuário"
           onChange={handleChange}
+          error={errors.username}
+          isTouched={touched.username}
+          onBlur={handleBlur}
         />
       </div>
       <div>
@@ -103,6 +113,9 @@ function FormContent() {
           value={values.name}
           placeholder="Nome"
           onChange={handleChange}
+          error={errors.name}
+          isTouched={touched.name}
+          onBlur={handleBlur}
         />
       </div>
 
