@@ -1,7 +1,33 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
-const useForm = ({initialState, onSubmit}) => {
+const useForm = ({initialState, onSubmit, validateSchema}) => {
   const [values, setValues] = useState(initialState)
+  const [isFormDisabled, setIsFormDisabled] = useState(true)
+  const [errors, setErrors] = useState({})
+  const [touched, setTouchedFields] = useState({})
+
+  useEffect(() => {
+    validateSchema(values)
+      .then(() => {
+        setIsFormDisabled(false)
+        setErrors({})
+      })
+      .catch((err) => {
+        const formatedErrors = err.inner.reduce(
+          (errorObjectAcc, currentError) => {
+            const fieldName = currentError.path
+            const errorMessage = currentError.message
+            return {
+              ...errorObjectAcc,
+              [fieldName]: errorMessage,
+            }
+          },
+          {},
+        )
+        setErrors(formatedErrors)
+        setIsFormDisabled(true)
+      })
+  }, [values])
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
@@ -19,10 +45,24 @@ const useForm = ({initialState, onSubmit}) => {
     }))
   }
 
+  const handleBlur = (event) => {
+    const fieldName = event.target.getAttribute('name')
+
+    setTouchedFields({
+      ...touched,
+      [fieldName]: true, // usuario: true, senha: true ...
+    })
+  }
+
   return {
     handleChange,
     handleSubmit,
     values,
+    handleBlur,
+    // Validação do Form
+    isFormDisabled,
+    errors,
+    touched,
   }
 }
 

@@ -5,6 +5,7 @@ import {Lottie} from '@crello/react-lottie'
 import Typography from '../../foundation/Typography'
 import TextField from '../../forms/TextField'
 import {Button} from '../../common/Button'
+import * as yup from 'yup'
 import {useTheme} from '../../../infra/hooks/theme/useTheme'
 import useForm from '../../../infra/hooks/forms/useForm'
 import errorAnimation from './animations/error.json'
@@ -18,16 +19,34 @@ const formStates = {
   ERROR: 'ERROR',
 }
 
+const registerSchema = yup.object().shape({
+  username: yup
+    .string()
+    .required('"Usuario" é obrigatório')
+    .min(3, 'Preencha ao menos 3 caracteres'),
+  name: yup.string().required('"Nome" é obrigatória'),
+})
+
 function FormContent() {
   const initialState = {
     username: '',
     name: '',
   }
-  const {handleChange, handleSubmit, values} = useForm({initialState, onSubmit})
+  const {handleChange, handleSubmit, values} = useForm({
+    initialState,
+    onSubmit,
+    validateSchema,
+  })
   const [isFormSubmited, setIsFormSubmited] = React.useState(false)
   const [submissionStatus, setSubmitionStatus] = React.useState(
     formStates.DEFAULT,
   )
+
+  async function validateSchema(values) {
+    return registerSchema.validate(values, {
+      abortEarly: false,
+    })
+  }
 
   function onSubmit(values) {
     const {username, name} = values

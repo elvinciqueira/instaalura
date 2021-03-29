@@ -3,6 +3,18 @@ import typographyVariants from './typographyVariants'
 export const colors = {
   modes: {
     light: {
+      error: {
+        main: {
+          color: '#dc3545',
+          contrastText: '#fff',
+        },
+      },
+      success: {
+        main: {
+          color: '#28a745',
+          contrastText: '#fff',
+        },
+      },
       background: {
         light: {
           color: '#FFF',
