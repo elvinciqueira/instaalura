@@ -64,6 +64,7 @@ const useForm = ({initialState, onSubmit, validateSchema}) => {
     handleBlur,
     // Validação do Form
     isFormDisabled,
+    setIsFormDisabled,
     errors,
     touched,
   }
