@@ -2,6 +2,7 @@ import TextField from '../../forms/TextField'
 import {Button} from '../../common/Button'
 import useForm from '../../../infra/hooks/forms/useForm'
 import {useRouter} from 'next/router'
+import PropTypes from 'prop-types'
 import * as yup from 'yup'
 import {loginService} from '../../../services/login/loginService'
 
