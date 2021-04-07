@@ -4,6 +4,8 @@ import {Box} from '../../foundation/layout/Box'
 import {Grid} from '../../foundation/layout/Grid'
 import Typography from '../../foundation/Typography'
 
+export {getContent} from './getContent'
+
 export default function AboutScreen({messages}) {
   return (
     <Box display="flex" flexDirection="column" flex={1}>
