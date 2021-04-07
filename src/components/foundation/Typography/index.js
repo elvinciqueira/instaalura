@@ -1,65 +1,13 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import get from 'lodash/get'
 import {propToStyle} from '../../../theme/utils/propToStyle'
 import {Link} from '../../common/Link'
+import {TextStyleVariants} from './TextStyleVariants'
+import {WebsitePageContext} from '../../wrappers/WebsitePage/context'
 
-const paragraph1 = css`
-  ${({theme}) => css`
-    font-size: ${theme.typographyVariants.paragraph1.fontSize};
-    font-weight: ${theme.typographyVariants.paragraph1.fontWeight};
-    line-height: ${theme.typographyVariants.paragraph1.lineHeight};
-  `}
-`
-
-const paragraphy2 = css`
-  ${({theme}) => css`
-    font-size: ${theme.typographyVariants.paragraphy2.fontSize};
-    font-weight: ${theme.typographyVariants.paragraphy2.fontWeight};
-    line-height: ${theme.typographyVariants.paragraphy2.lineHeight};
-  `}
-`
-
-const subTitle = css`
-  ${({theme}) => css`
-    font-size: ${theme.typographyVariants.subTitle.fontSize};
-    font-weight: ${theme.typographyVariants.subTitle.fontWeight};
-    line-height: ${theme.typographyVariants.subTitle.lineHeight};
-  `}
-`
-
-const smallestException = css`
-  ${({theme}) => css`
-    font-size: ${theme.typographyVariants.smallestException.fontSize};
-    font-weight: ${theme.typographyVariants.smallestException.fontWeight};
-    line-height: ${theme.typographyVariants.smallestException.lineHeight};
-  `}
-`
-
-const title = css`
-  ${({theme}) => css`
-    font-size: ${theme.typographyVariants.title.fontSize};
-    font-weight: ${theme.typographyVariants.title.fontWeight};
-    line-height: ${theme.typographyVariants.title.lineHeight};
-  `}
-`
-
-const titleXS = css`
-  ${({theme}) => css`
-    font-size: ${theme.typographyVariants.titleXS.fontSize};
-    font-weight: ${theme.typographyVariants.titleXS.fontWeight};
-    line-height: ${theme.typographyVariants.titleXS.lineHeight};
-  `}
-`
-
-export const TextStyleVariants = {
-  smallestException,
-  paragraph1,
-  title,
-  titleXS,
-  subTitle,
-}
+export {TextStyleVariants} from './TextStyleVariants'
 
 const TextBase = styled.span`
   ${({variant}) => TextStyleVariants[variant]}
@@ -68,7 +16,20 @@ const TextBase = styled.span`
   ${propToStyle('textAlign')}
 `
 
-export default function Typography({tag, variant, children, href, ...rest}) {
+export default function Typography({
+  tag,
+  variant,
+  children,
+  href,
+  cmsKey,
+  ...rest
+}) {
+  const websitePageContext = React.useContext(WebsitePageContext)
+
+  const componentContent = cmsKey
+    ? websitePageContext.getCMSContent(cmsKey)
+    : children
+
   if (href) {
     return (
       <TextBase
@@ -78,14 +39,14 @@ export default function Typography({tag, variant, children, href, ...rest}) {
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       >
-        {children}
+        {componentContent}
       </TextBase>
     )
   }
 
   return (
     <TextBase as={tag} variant={variant} {...rest}>
-      {children}
+      {componentContent}
     </TextBase>
   )
 }
@@ -95,11 +56,13 @@ Typography.defaultProps = {
   variant: 'paragraph1',
   children: null,
   href: '',
+  cmsKey: undefined,
 }
 
 Typography.propTypes = {
   children: PropTypes.node,
   href: PropTypes.string,
+  cmsKey: PropTypes.string,
   tag: PropTypes.oneOf([
     'h1',
     'h2',

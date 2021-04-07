@@ -12,9 +12,12 @@ export default function AboutScreen({messages}) {
       <Grid.Container>
         <Grid.Row marginTop={{xs: '32px', md: '120px'}} flex="1">
           <Grid.Col value={{xs: 12, md: 6, lg: 6}} offset={{md: 2}} flex={1}>
-            <Typography variant="title" tag="h2" color="tertiary.main">
-              {messages.pageSobre.pageTitle}
-            </Typography>
+            <Typography
+              variant="title"
+              tag="h2"
+              color="tertiary.main"
+              cmsKey="pageSobre.pageTitle"
+            />
 
             <Box
               dangerouslySetInnerHTML={{
