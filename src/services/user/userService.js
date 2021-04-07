@@ -1,5 +1,5 @@
 import {isStagingEnv} from '../../infra/env/isStagingEnv'
-import {HttpClient} from '../../infra/http/HttpClient'
+import HttpClient from '../../infra/HttpClient'
 import {authService} from '../auth/authService'
 
 const BASE_URL = isStagingEnv

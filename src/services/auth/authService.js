@@ -1,7 +1,7 @@
 import {parseCookies} from 'nookies'
 import jwt from 'jsonwebtoken'
 import {loginService, LOGIN_COOKIE_APP_TOKEN} from '../login/loginService'
-import {HttpClient} from '../../infra/HttpClient'
+import HttpClient from '../../infra/HttpClient'
 import {isStagingEnv} from '../../infra/env/isStagingEnv'
 
 const BASE_URL = isStagingEnv
