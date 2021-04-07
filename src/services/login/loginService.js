@@ -6,6 +6,8 @@ const BASE_URL = isStagingEnv
   ? 'https://instalura-api.vercel.app'
   : 'https://instalura-api.vercel.app'
 
+export const LOGIN_COOKIE_APP_TOKEN = 'LOGIN_COOKIE_APP_TOKEN'
+
 export const loginService = {
   async login(
     {username, password},
@@ -26,7 +28,7 @@ export const loginService = {
       }
       const DAY_IN_SECONDS = 86400
 
-      setCookieModule(null, 'APP_TOKEN', token, {
+      setCookieModule(null, LOGIN_COOKIE_APP_TOKEN, token, {
         path: '/',
         maxAge: DAY_IN_SECONDS * 7,
       })
@@ -39,7 +41,7 @@ export const loginService = {
     })
   },
 
-  async logout(destroyCookieModule = destroyCookie) {
-    destroyCookieModule(null, 'APP_TOKEN')
+  async logout(ctx, destroyCookieModule = destroyCookie) {
+    destroyCookieModule(ctx, null, LOGIN_COOKIE_APP_TOKEN, {path: '/'})
   },
 }
