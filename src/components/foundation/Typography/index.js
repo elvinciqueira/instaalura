@@ -11,8 +11,9 @@ export {TextStyleVariants} from './TextStyleVariants'
 
 const TextBase = styled.span`
   ${({variant}) => TextStyleVariants[variant]}
-  color: ${({theme, color}) =>
-    get(theme, `colors.modes.${theme.mode}.${color}.color`)};
+  color: ${({theme, color}) => {
+    return get(theme, `colors.modes.${theme.mode}.${color}.color`)
+  }};
   ${propToStyle('textAlign')}
 `
 

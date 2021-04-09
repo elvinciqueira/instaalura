@@ -7,7 +7,7 @@ export default websitePageHOC(LoginScreen, {
       display: false,
     },
     pageBoxProps: {
-      backgroundImage: 'url(/images/bubble.svg)',
+      backgroundImageTheme: true,
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'bottom right',
     },
