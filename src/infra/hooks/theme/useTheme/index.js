@@ -1,5 +1,7 @@
-import React, {useCallback, createContext, useState, useContext} from 'react'
+import React, {createContext, useState, useContext, useEffect} from 'react'
+import {setCookie, parseCookies} from 'nookies'
 import {ThemeProvider as StyleComponentsThemeProvider} from 'styled-components'
+
 import theme from '../../../../theme'
 
 const ThemeContext = createContext({
@@ -10,14 +12,24 @@ const ThemeContext = createContext({
 const ThemeProvider = ({children}) => {
   const [currentMode, setCurrentMode] = useState('light')
 
-  const toggleTheme = useCallback(
-    () =>
-      setCurrentMode((currentMode) =>
-        currentMode === 'light' ? 'dark' : 'light',
-      ),
+  useEffect(() => {
+    const {theme} = parseCookies()
 
-    [],
-  )
+    setCurrentMode(theme)
+  }, [])
+
+  const toggleTheme = () => {
+    setCurrentMode((currentMode) => {
+      const theme = currentMode === 'light' ? 'dark' : 'light'
+
+      setCookie(null, 'theme', theme, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: '/',
+      })
+
+      return theme
+    })
+  }
 
   return (
     <StyleComponentsThemeProvider theme={{...theme, mode: currentMode}}>
