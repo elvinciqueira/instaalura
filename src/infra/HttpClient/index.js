@@ -1,5 +1,9 @@
-export default async function HttpClient(url, {headers, body, ...options}) {
-  const serverResponse = await fetch(url, {
+export default async function HttpClient(
+  url,
+  {headers, body, ...options},
+  fetchModule = fetch,
+) {
+  const serverResponse = await fetchModule(url, {
     headers: {
       ...headers,
       'Content-Type': 'application/json',

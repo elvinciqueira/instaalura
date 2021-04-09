@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HttpClient() when HttpClient gets called and succeed returns a server response 1`] = `
+Object {
+  "data": Object {
+    "username": "some-username",
+  },
+}
+`;
