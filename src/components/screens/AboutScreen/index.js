@@ -3,10 +3,13 @@ import PropTypes from 'prop-types'
 import {Box} from '../../foundation/layout/Box'
 import {Grid} from '../../foundation/layout/Grid'
 import Typography from '../../foundation/Typography'
+import {useTheme} from '../../../infra/hooks/theme/useTheme'
 
 export {getContent} from './getContent'
 
 export default function AboutScreen({messages}) {
+  const {currentMode} = useTheme()
+
   return (
     <Box display="flex" flexDirection="column" flex={1}>
       <Grid.Container>
@@ -20,6 +23,9 @@ export default function AboutScreen({messages}) {
             />
 
             <Box
+              color={
+                currentMode === 'light' ? 'tertiary.light' : 'tertiary.main'
+              }
               dangerouslySetInnerHTML={{
                 __html: messages.pageSobre.pageDescription,
               }}

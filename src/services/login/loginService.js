@@ -33,8 +33,6 @@ export const loginService = {
         maxAge: DAY_IN_SECONDS * 7,
       })
 
-      console.log(response)
-
       return {
         token,
       }

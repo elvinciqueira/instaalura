@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import {propToStyle} from '../../../../theme/utils/propToStyle'
 import Bubbles from '../../../../theme/Bubbles'
+import get from 'lodash/get'
 
 export const Box = styled.div`
   ${propToStyle('display')}
@@ -22,8 +23,14 @@ export const Box = styled.div`
   ${propToStyle('marginTop')}
   ${propToStyle('marginBottom')}
   ${propToStyle('marginRight')}
+  
+  ${({theme, color}) =>
+    color &&
+    `color: ${get(theme, `colors.modes.${theme.mode}.${color}.color`)}`};
+
   ${({theme, borderRadiusTheme}) =>
     borderRadiusTheme && `border-radius: ${theme.borderRadius}`};
+
   ${({theme, backgroundImageTheme}) =>
     backgroundImageTheme &&
     `background-image: url(${Bubbles.url(theme.mode)})`};
