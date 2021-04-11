@@ -17,7 +17,7 @@ export const colors = {
       },
       background: {
         light: {
-          color: '#FFF',
+          color: '#f2f2f2',
         },
         main: {
           color: '#fff',

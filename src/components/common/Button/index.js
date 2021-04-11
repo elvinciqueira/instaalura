@@ -35,7 +35,15 @@ const ButtonBase = styled.button`
   }
 
   ${propToStyle('margin')}
+  ${propToStyle('marginLeft')}
+  ${propToStyle('marginRight')}
+  ${propToStyle('marginTop')}
+  ${propToStyle('marginBottom')}
   ${propToStyle('display')}
+  ${propToStyle('borderRadius')}
+  ${propToStyle('width')}
+  ${propToStyle('height')}
+  ${propToStyle('padding')}
 
   &:disabled {
     cursor: not-allowed;

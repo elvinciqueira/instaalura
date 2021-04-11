@@ -1,4 +1,4 @@
-import {createGlobalStyle, css} from 'styled-components'
+import {createGlobalStyle} from 'styled-components'
 import {normalize} from 'styled-normalize'
 
 const GlobalStyle = createGlobalStyle`
@@ -6,6 +6,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   ${normalize}
+
+  button {
+    cursor: pointer;
+  }
+
   html,
   body {
     margin: 0;
@@ -16,6 +21,9 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     background-color: ${({theme}) => {
       const {mode: currentMode} = theme
+
+      return theme.colors.modes[currentMode].background.main.color
+    }};
 
       return theme.colors.modes[currentMode].background.main.color
     }};

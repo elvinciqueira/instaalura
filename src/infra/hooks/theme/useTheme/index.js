@@ -15,7 +15,9 @@ const ThemeProvider = ({children}) => {
   useEffect(() => {
     const {theme} = parseCookies()
 
-    setCurrentMode(theme)
+    if (theme) {
+      setCurrentMode(theme)
+    }
   }, [])
 
   const toggleTheme = () => {

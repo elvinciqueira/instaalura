@@ -16,6 +16,7 @@ export default function WebsitePageWrapper({
   children,
   pageBoxProps,
   menuProps,
+  footerProps,
   seoProps,
   messages,
 }) {
@@ -46,7 +47,8 @@ export default function WebsitePageWrapper({
         </Modal>
 
         {children}
-        <Footer />
+
+        {footerProps.display && <Footer />}
       </Box>
     </WebsitePageContext.Provider>
   )
@@ -58,6 +60,9 @@ WebsitePageWrapper.defaultProps = {
   menuProps: {
     display: true,
   },
+  footerProps: {
+    display: true,
+  },
   messages: {},
 }
 
@@ -66,6 +71,9 @@ WebsitePageWrapper.propTypes = {
     headTitle: PropTypes.string,
   }),
   menuProps: PropTypes.shape({
+    display: PropTypes.bool,
+  }),
+  footerProps: PropTypes.shape({
     display: PropTypes.bool,
   }),
   pageBoxProps: PropTypes.shape({

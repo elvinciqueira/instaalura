@@ -15,6 +15,10 @@ const TextBase = styled.span`
     return get(theme, `colors.modes.${theme.mode}.${color}.color`)
   }};
   ${propToStyle('textAlign')}
+  ${propToStyle('marginTop')}
+  ${propToStyle('marginBottom')}
+  ${propToStyle('marginRight')}
+  ${propToStyle('marginLeft')}
 `
 
 export default function Typography({
