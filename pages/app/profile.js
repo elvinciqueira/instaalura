@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {Logo} from '../../src/theme/Logo'
 import {FiHome, FiHeart} from 'react-icons/fi'
 import {Grid} from '../../src/components/foundation/layout/Grid'
@@ -7,6 +7,7 @@ import {Flex} from '../../src/components/foundation/layout/Flex'
 import {Box} from '../../src/components/foundation/layout/Box'
 import Typography from '../../src/components/foundation/Typography'
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc'
+import {breakPointsMedia} from '../../src/theme/utils/breakPointsMedia'
 
 import {authService} from '../../src/services/auth/authService'
 import {userService} from '../../src/services/user/userService'
@@ -43,7 +44,7 @@ const ButtonModal = styled.button`
     theme.colors.modes[theme.mode].secondary.main.color};
 `
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.section`
   width: 100%;
   height: 100vh;
   background-color: ${({theme}) =>
@@ -73,8 +74,17 @@ Header.RightSide = styled.div`
 const ProfileAvatar = styled.div`
   background-color: #333;
   border-radius: 50%;
-  width: 188px;
-  height: 188px;
+
+  ${breakPointsMedia({
+    xs: css`
+      width: 77px;
+      height: 77px;
+    `,
+    md: css`
+      width: 150px;
+      height: 150px;
+    `,
+  })}
 `
 
 const Avatar = styled.div`
@@ -109,17 +119,23 @@ function ProfilePage() {
       </Header>
 
       <ContentWrapper>
-        <Grid.Container paddingTop="80px">
-          <Grid.Row alignItems="center">
-            <Grid.Col offset={3} value={{md: 3}}>
+        <Grid.Container paddingTop="64px">
+          <Grid.Row alignItems="center" justifyContent="center">
+            <Grid.Col
+              offset={{xs: 0, md: 2}}
+              value={{xs: 3, md: 3}}
+              padding={{xs: '0'}}
+              display="flex"
+              justifyContent="center"
+            >
               <ProfileAvatar />
             </Grid.Col>
-            <Grid.Col value={{md: 6}}>
-              <Box display="flex" flexDirection="column">
-                <Box display="flex" marginBottom="32px">
+            <Grid.Col>
+              <Grid.Row>
+                <Grid.Col value={{xs: 3, md: 3}} padding={{xs: '0'}}>
                   <Flex flexDirection="column">
-                    <Typography variant="titleXS" color="tertiary.main">
-                      234
+                    <Typography variant={'titleXS'} color="tertiary.main">
+                      22K
                     </Typography>
                     <Typography
                       variant="paragraph1"
@@ -129,45 +145,61 @@ function ProfilePage() {
                       Publicações
                     </Typography>
                   </Flex>
-                  <Flex flexDirection="column" margin="0 32px">
-                    <Typography variant="titleXS" color="tertiary.main">
-                      22k
-                    </Typography>
-                    <Typography
-                      variant="paragraph1"
-                      color="tertiary.light"
-                      marginTop="8px"
-                    >
-                      Seguindo
-                    </Typography>
-                  </Flex>
+                </Grid.Col>
+                <Grid.Col
+                  value={{xs: 3, md: 3}}
+                  padding={{xs: '0'}}
+                  margin={{xs: '0 32px', md: '0'}}
+                >
                   <Flex flexDirection="column">
-                    <Typography variant="titleXS" color="tertiary.main">
-                      134
+                    <Typography variant={'titleXS'} color="tertiary.main">
+                      22K
                     </Typography>
                     <Typography
-                      variant="paragraph1"
+                      variant={'paragraph1'}
                       color="tertiary.light"
                       marginTop="8px"
                     >
                       Seguidores
                     </Typography>
                   </Flex>
-                </Box>
-
-                <Flex flexDirection="column">
-                  <Typography variant="titleXS" color="tertiary.main">
-                    Nicolas Cage
-                  </Typography>
-                  <Typography
-                    variant="paragraph1"
-                    color="tertiary.light"
-                    marginTop="8px"
-                  >
-                    A wholesom person responsive for the best movies ever
-                  </Typography>
-                </Flex>
-              </Box>
+                </Grid.Col>
+                <Grid.Col value={{xs: 3, md: 3}} padding={{xs: '0'}}>
+                  <Flex flexDirection="column">
+                    <Typography variant={'titleXS'} color="tertiary.main">
+                      22K
+                    </Typography>
+                    <Typography
+                      variant={'paragraph1'}
+                      color="tertiary.light"
+                      marginTop="8px"
+                    >
+                      Seguindo
+                    </Typography>
+                  </Flex>
+                </Grid.Col>
+              </Grid.Row>
+            </Grid.Col>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Col
+              offset={{xs: 0, md: 5}}
+              value={{xs: 12, md: 12}}
+              padding="0"
+              marginTop={{xs: '32px', md: '0'}}
+            >
+              <Flex flexDirection="column">
+                <Typography variant={'titleXS'} color="tertiary.main">
+                  Nicolas Cage
+                </Typography>
+                <Typography
+                  variant={'paragraph1'}
+                  color="tertiary.light"
+                  marginTop="8px"
+                >
+                  A wholesome person responsible for the best movies ever.
+                </Typography>
+              </Flex>
             </Grid.Col>
           </Grid.Row>
         </Grid.Container>
