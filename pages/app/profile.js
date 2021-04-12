@@ -23,6 +23,7 @@ const Header = styled.header`
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 28px;
+  border-bottom: 1px solid #d5d5d5;
 `
 
 const ButtonModal = styled.button`
@@ -35,6 +36,7 @@ const ButtonModal = styled.button`
   border: 0;
   color: #fff;
   transition: opacity 0.2s;
+  box-shadow: 0px 0px 12px rgba(251, 123, 107, 0.3);
 
   &:hover,
   &:focus {
