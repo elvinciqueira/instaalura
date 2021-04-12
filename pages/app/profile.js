@@ -81,6 +81,7 @@ const ProfileAvatar = styled.div`
     xs: css`
       width: 77px;
       height: 77px;
+      margin-right: 10px;
     `,
     md: css`
       width: 150px;
@@ -185,8 +186,8 @@ function ProfilePage() {
           </Grid.Row>
           <Grid.Row>
             <Grid.Col
-              offset={{xs: 0, md: 5}}
-              value={{xs: 12, md: 12}}
+              offset={{xs: 0.5, md: 5}}
+              value={{xs: 10, md: 10}}
               padding="0"
               marginTop={{xs: '32px', md: '0'}}
             >
