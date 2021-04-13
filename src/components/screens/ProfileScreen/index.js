@@ -4,7 +4,6 @@ import {FiHome, FiHeart, FiSearch} from 'react-icons/fi'
 
 import {Grid} from '../../foundation/layout/Grid'
 import {Flex} from '../../foundation/layout/Flex'
-import {Box} from '../../foundation/layout/Box'
 import Typography from '../../foundation/Typography'
 
 import {

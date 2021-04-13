@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, {css, createGlobalStyle} from 'styled-components'
 import {motion} from 'framer-motion'
+import {Box} from '../../foundation/layout/Box'
 
 const ModalWrapper = styled.div`
   display: flex;
@@ -39,6 +40,24 @@ const LockScroll = createGlobalStyle`
 `
 
 function Modal({isOpen, onClose, children}) {
+  const CloseButton = () => (
+    <Box
+      position="absolute"
+      top={{
+        xs: '30px',
+        md: '30px',
+      }}
+      right={{
+        xs: '40px',
+        md: '30px',
+      }}
+      onClick={() => onClose()}
+      cursor="pointer"
+    >
+      <img src="/images/close.svg" alt="bot de fechar" />
+    </Box>
+  )
+
   const variants = {
     open: {x: 0},
     closed: {x: '100%'},
@@ -64,6 +83,7 @@ function Modal({isOpen, onClose, children}) {
       >
         {children({
           'data-modal-safe-area': 'true',
+          CloseButton,
         })}
       </motion.div>
     </ModalWrapper>

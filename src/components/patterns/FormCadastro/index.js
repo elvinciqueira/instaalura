@@ -168,17 +168,6 @@ export default function FormCadastro({propsDoModal}) {
         flex={1}
         value={{xs: 12, md: 5, lg: 4}}
       >
-        <div
-          style={{
-            position: 'absolute',
-            left: '97%',
-            bottom: '93%',
-            cursor: 'pointer',
-          }}
-        >
-          <img src="images/close.svg" alt="Close Button" />
-        </div>
-
         <Box
           boxShadow="-10px 0px 24px rgba(7, 12, 14, 0.1)"
           display="flex"
@@ -193,6 +182,7 @@ export default function FormCadastro({propsDoModal}) {
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...propsDoModal}
         >
+          <propsDoModal.CloseButton />
           <FormContent />
         </Box>
       </Grid.Col>
