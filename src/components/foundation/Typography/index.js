@@ -85,6 +85,7 @@ Typography.propTypes = {
     'paragraph2',
     'smallestException',
     'title',
+    'titleXS',
     'subTitle',
   ]),
 }

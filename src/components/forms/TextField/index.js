@@ -10,7 +10,7 @@ const InputWrapper = styled.div`
 const Input = styled(Typography)`
   width: 100%;
   background-color: ${({theme}) =>
-    theme.colors.modes[theme.mode].background.light.color};
+    theme.colors.modes[theme.mode].background.main.color};
   border: 1px solid #d4d4d4;
   padding: 12px 16px;
   outline: 0;
