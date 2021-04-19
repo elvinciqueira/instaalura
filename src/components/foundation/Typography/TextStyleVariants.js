@@ -8,11 +8,11 @@ const paragraph1 = css`
   `}
 `
 
-const paragraphy2 = css`
+const paragraph2 = css`
   ${({theme}) => css`
-    font-size: ${theme.typographyVariants.paragraphy2.fontSize};
-    font-weight: ${theme.typographyVariants.paragraphy2.fontWeight};
-    line-height: ${theme.typographyVariants.paragraphy2.lineHeight};
+    font-size: ${theme.typographyVariants.paragraph2.fontSize};
+    font-weight: ${theme.typographyVariants.paragraph2.fontWeight};
+    line-height: ${theme.typographyVariants.paragraph2.lineHeight};
   `}
 `
 
@@ -51,6 +51,7 @@ const titleXS = css`
 export const TextStyleVariants = {
   smallestException,
   paragraph1,
+  paragraph2,
   title,
   titleXS,
   subTitle,

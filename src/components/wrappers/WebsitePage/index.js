@@ -4,6 +4,7 @@ import {Box} from '../../foundation/layout/Box'
 import Menu from '../../common/Menu'
 import get from 'lodash/get'
 import FormCadastro from '../../patterns/FormCadastro'
+import RecordImage from '../../patterns/RecordImage'
 import Footer from '../../common/Footer'
 import SEO from '../../common/SEO'
 import Modal from '../../common/Modal'
@@ -21,10 +22,16 @@ export default function WebsitePageWrapper({
   messages,
 }) {
   const [isModalOpen, setModalState] = React.useState(false)
+  const [isModalRecordImageOpen, setModalRecordImageState] = React.useState(
+    false,
+  )
 
   const handleOnClose = () => setModalState(false)
 
   const toggleModalCadastro = () => setModalState(!isModalOpen)
+
+  const toggleModalRecordImage = () =>
+    setModalRecordImageState(!isModalRecordImageOpen)
 
   const getCMSContent = (cmsKey) => get(messages, cmsKey)
 
@@ -32,6 +39,7 @@ export default function WebsitePageWrapper({
     <WebsitePageContext.Provider
       value={{
         toggleModalCadastro,
+        toggleModalRecordImage,
         getCMSContent,
       }}
     >
@@ -44,6 +52,10 @@ export default function WebsitePageWrapper({
 
         <Modal isOpen={isModalOpen} onClose={handleOnClose}>
           {(propsDoModal) => <FormCadastro propsDoModal={propsDoModal} />}
+        </Modal>
+
+        <Modal isOpen={isModalRecordImageOpen} onClose={toggleModalRecordImage}>
+          {(propsDoModal) => <RecordImage propsDoModal={propsDoModal} />}
         </Modal>
 
         {children}

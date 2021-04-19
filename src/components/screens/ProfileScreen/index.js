@@ -5,6 +5,7 @@ import {FiHome, FiHeart, FiSearch} from 'react-icons/fi'
 import {Grid} from '../../foundation/layout/Grid'
 import {Flex} from '../../foundation/layout/Flex'
 import Typography from '../../foundation/Typography'
+import {WebsitePageContext} from '../../wrappers/WebsitePage/index'
 
 import {
   Avatar,
@@ -16,6 +17,12 @@ import {
 } from './styles'
 
 export default function ProfileScreen() {
+  const websitePageContext = React.useContext(WebsitePageContext)
+
+  console.log(websitePageContext)
+
+  const handleOpenModal = () => websitePageContext.toggleModalRecordImage()
+
   return (
     <Wrapper>
       <Header>
@@ -31,6 +38,7 @@ export default function ProfileScreen() {
             variant="primary.main"
             borderRadius="50%"
             padding="0"
+            onClick={handleOpenModal}
           >
             +
           </ButtonModal>

@@ -43,7 +43,11 @@ const ButtonBase = styled.button`
   ${propToStyle('borderRadius')}
   ${propToStyle('width')}
   ${propToStyle('height')}
-  ${propToStyle('padding')}
+  ${propToStyle('position')}
+  ${propToStyle('right')}
+  ${propToStyle('top')}
+  ${propToStyle('left')}
+  ${propToStyle('bottom')}
 
   &:disabled {
     cursor: not-allowed;
@@ -62,6 +66,7 @@ const ButtonBase = styled.button`
     md: css`
       padding: 12px 43px;
       ${TextStyleVariants.paragraph1};
+      ${propToStyle('padding')}
     `,
   })}
 `
