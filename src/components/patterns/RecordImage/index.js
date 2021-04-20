@@ -1,3 +1,6 @@
+import React, {useState} from 'react'
+import Flickity from 'react-flickity-component'
+
 import {Box} from '../../foundation/layout/Box'
 import {Button} from '../../common/Button'
 import {Grid} from '../../foundation/layout/Grid'
@@ -5,12 +8,23 @@ import Typography from '../../foundation/Typography'
 import TextField from '../../forms/TextField'
 import {useTheme} from '../../../infra/hooks/theme/useTheme'
 import {FiArrowRight} from 'react-icons/fi'
+import {instagramFilters} from '../../../theme/instagramFilters'
 
-function FormContent() {
+function FormContent({setImageURL, imageURL}) {
+  const inputRef = React.createRef()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    setImageURL(inputRef.current.value)
+  }
+
   return (
-    <form style={{position: 'relative'}}>
+    <form style={{position: 'relative'}} onSubmit={handleSubmit}>
       <TextField
+        ref={inputRef}
         placeholder="URL da Imagem"
+        defaultValue={imageURL}
         type="url"
         name="image_url"
         fullWidth
@@ -25,6 +39,7 @@ function FormContent() {
         padding="12px 26px"
         justifyContent="center"
         alignItems="center"
+        onClick={handleSubmit}
       >
         <FiArrowRight size={20} />
       </Button>
@@ -34,6 +49,10 @@ function FormContent() {
 
 export default function RecordImage({propsDoModal}) {
   const {currentMode} = useTheme()
+
+  const [activeStep, setActiveStep] = useState(0)
+  const [imageURL, setImageURL] = useState('')
+  const [filter, setFilter] = useState('')
 
   return (
     <Grid.Row
@@ -65,21 +84,65 @@ export default function RecordImage({propsDoModal}) {
           {...propsDoModal}
         >
           <propsDoModal.CloseButton />
-          <Box width="100%" backgroundColor="#D4D4D4" flex={1} />
+          <Box
+            className={filter}
+            width="100%"
+            flex={1}
+            backgroundColor="#D4D4D4"
+            backgroundImage={`url(${imageURL})`}
+            backgroundRepeat="no-repeat"
+            backgroundSize="cover"
+            backgroundPosition="center"
+          />
 
           <Box padding="32px">
-            <FormContent />
+            {activeStep === 0 && (
+              <>
+                <FormContent setImageURL={setImageURL} imageURL={imageURL} />
 
-            <Typography
-              tag="p"
-              variant="paragraph2"
-              color="tertiary.light"
-              textAlign="center"
+                <Typography
+                  tag="p"
+                  variant="paragraph2"
+                  color="tertiary.light"
+                  textAlign="center"
+                >
+                  Formatos suportados: jpg, png, svg e xpto
+                </Typography>
+              </>
+            )}
+
+            {activeStep === 1 && (
+              <Flickity
+                className={'carousel'} // default ''
+                elementType={'div'} // default 'div'
+                options={{
+                  wrapAround: true,
+                  freeScroll: true,
+                  contain: true,
+                  // disable previous & next buttons and dots
+                  prevNextButtons: false,
+                  pageDots: false,
+                  lazyLoad: 1,
+                }}
+              >
+                {instagramFilters.map((filter) => (
+                  <figure
+                    onClick={() => setFilter(filter)}
+                    className={filter}
+                    key={filter}
+                  >
+                    <img src={imageURL} width="88" height="88" alt="Image" />
+                  </figure>
+                ))}
+              </Flickity>
+            )}
+
+            <Button
+              marginTop="64px"
+              fullWidth
+              variant="primary.main"
+              onClick={() => setActiveStep(activeStep + 1)}
             >
-              Formatos suportados: jpg, png, svg e xpto
-            </Typography>
-
-            <Button marginTop="32px" fullWidth variant="primary.main">
               Avançar
             </Button>
           </Box>

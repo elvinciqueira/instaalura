@@ -23,16 +23,8 @@ Input.defaultProps = {
   type: 'text',
 }
 
-export default function TextField({
-  placeholder,
-  name,
-  onChange,
-  value,
-  type,
-  error,
-  isTouched,
-  ...props
-}) {
+const TextField = React.forwardRef((props, ref) => {
+  const {placeholder, name, onChange, value, type, error, isTouched} = props
   const hasError = Boolean(error)
   const isFieldInvalid = hasError && isTouched
 
@@ -45,6 +37,7 @@ export default function TextField({
         onChange={onChange}
         value={value}
         {...props}
+        ref={ref}
       />
 
       {isFieldInvalid && (
@@ -54,7 +47,7 @@ export default function TextField({
       )}
     </InputWrapper>
   )
-}
+})
 
 TextField.defaultProps = {
   error: '',
@@ -66,6 +59,8 @@ TextField.propTypes = {
   name: PropTypes.string.isRequired,
   error: PropTypes.string,
   isTouched: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
 }
+
+export default TextField

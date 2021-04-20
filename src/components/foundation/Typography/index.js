@@ -21,14 +21,9 @@ const TextBase = styled.span`
   ${propToStyle('marginLeft')}
 `
 
-export default function Typography({
-  tag,
-  variant,
-  children,
-  href,
-  cmsKey,
-  ...rest
-}) {
+const Typography = React.forwardRef((rest, ref) => {
+  const {tag, variant, children, href, cmsKey} = rest
+
   const websitePageContext = React.useContext(WebsitePageContext)
 
   const componentContent = cmsKey
@@ -41,6 +36,7 @@ export default function Typography({
         as={Link}
         variant={variant}
         href={href}
+        ref={ref}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       >
@@ -50,11 +46,11 @@ export default function Typography({
   }
 
   return (
-    <TextBase as={tag} variant={variant} {...rest}>
+    <TextBase as={tag} ref={ref} variant={variant} {...rest}>
       {componentContent}
     </TextBase>
   )
-}
+})
 
 Typography.defaultProps = {
   tag: 'span',
@@ -89,3 +85,5 @@ Typography.propTypes = {
     'subTitle',
   ]),
 }
+
+export default Typography

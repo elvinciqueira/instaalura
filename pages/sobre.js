@@ -1,4 +1,3 @@
-import {GraphQLClient, gql} from 'graphql-request'
 import AboutScreen, {getContent} from '../src/components/screens/AboutScreen'
 import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc'
 

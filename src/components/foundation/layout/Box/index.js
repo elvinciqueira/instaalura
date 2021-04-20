@@ -13,11 +13,13 @@ export const Box = styled.div`
   ${propToStyle('backgroundImage')}
   ${propToStyle('backgroundRepeat')}
   ${propToStyle('backgroundPosition')}
+  ${propToStyle('backgroundSize')}
   ${propToStyle('boxShadow')}
   ${propToStyle('borderRadius')}
   ${propToStyle('padding')}
   ${propToStyle('margin')}
   ${propToStyle('width')}
+  ${propToStyle('height')}
   ${propToStyle('listStyle')}
   ${propToStyle('margin')}
   ${propToStyle('position')}

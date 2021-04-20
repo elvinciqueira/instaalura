@@ -24,9 +24,6 @@ const GlobalStyle = createGlobalStyle`
 
       return theme.colors.modes[currentMode].background.main.color
     }};
-
-      return theme.colors.modes[currentMode].background.main.color
-    }};
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -36,6 +33,8 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
+
+
 `
 
 export default GlobalStyle
