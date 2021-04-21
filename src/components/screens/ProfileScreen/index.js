@@ -21,10 +21,7 @@ import {
 } from './styles'
 
 export default function ProfileScreen(props) {
-  const {data, error} = useSWR(
-    'https://instalura-api.vercel.app/api/users/posts',
-    postService().getPosts,
-  )
+  const {data, error} = useSWR('api/users/posts', postService().getPosts)
 
   const websitePageContext = React.useContext(WebsitePageContext)
 

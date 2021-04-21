@@ -35,8 +35,10 @@ export const postService = () => {
       }
     },
 
-    async getPosts(url) {
+    async getPosts(path) {
       try {
+        const url = `${BASE_URL}/${path}`
+
         const response = await HttpClient(url, {
           headers: {
             authorization: `Bearer ${token}`,

@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Flickity from 'react-flickity-component'
+import useSWR from 'swr'
 
 import {Box} from '../../foundation/layout/Box'
 import {Button} from '../../common/Button'
@@ -50,23 +51,30 @@ function FormContent({setImageURL, imageURL}) {
 }
 
 export default function RecordImage({propsDoModal, onClose}) {
+  const {data} = useSWR('api/users/posts', postService().getPosts)
+
   const {currentMode} = useTheme()
 
   const [activeStep, setActiveStep] = useState(0)
   const [imageURL, setImageURL] = useState('')
   const [filter, setFilter] = useState('')
 
-  const handleSendPost = async () => {
-    const ok = await postService().createPost({
+  const handleUpdatePosts = (newPost) => data?.push(newPost)
+
+  const handleCreatePost = async () => {
+    const newPost = await postService().createPost({
       photoUrl: imageURL,
       description: 'a wholesome post',
       filter,
     })
 
-    if (ok) {
-      onClose()
-    }
+    if (newPost) handleUpdatePosts(newPost)
+
+    setActiveStep(0)
+    onClose()
   }
+
+  if (!data) return <p>Carregando...</p>
 
   return (
     <Grid.Row
@@ -156,7 +164,7 @@ export default function RecordImage({propsDoModal, onClose}) {
                 marginTop="64px"
                 fullWidth
                 variant="primary.main"
-                onClick={handleSendPost}
+                onClick={handleCreatePost}
               >
                 Postar
               </Button>
