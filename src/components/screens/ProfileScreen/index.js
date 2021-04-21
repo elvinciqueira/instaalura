@@ -20,7 +20,7 @@ import {
   ProfileAvatar,
 } from './styles'
 
-export default function ProfileScreen(props) {
+export default function ProfileScreen({user}) {
   const {data, error} = useSWR('api/users/posts', postService().getPosts)
 
   const websitePageContext = React.useContext(WebsitePageContext)
@@ -128,7 +128,7 @@ export default function ProfileScreen(props) {
             >
               <Flex flexDirection="column">
                 <Typography variant={'titleXS'} color="tertiary.main">
-                  Nicolas Cage
+                  {user.username}
                 </Typography>
                 <Typography
                   variant={'paragraph1'}
