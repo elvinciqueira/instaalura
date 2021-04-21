@@ -21,14 +21,13 @@ import {
 } from './styles'
 
 export default function ProfileScreen({user}) {
+  const websitePageContext = React.useContext(WebsitePageContext)
   const {data, error} = useSWR('api/users/posts', postService().getPosts)
 
-  const websitePageContext = React.useContext(WebsitePageContext)
+  const handleOpenModal = () => websitePageContext.toggleModalRecordImage()
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
-
-  const handleOpenModal = () => websitePageContext.toggleModalRecordImage()
 
   return (
     <Wrapper>
