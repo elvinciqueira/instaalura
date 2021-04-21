@@ -61,6 +61,13 @@ export default function RecordImage({propsDoModal, onClose}) {
 
   const handleUpdatePosts = (newPost) => data?.push(newPost)
 
+  const resetAllState = () => {
+    setActiveStep(0)
+    setImageURL('')
+    setFilter('')
+    onClose()
+  }
+
   const handleCreatePost = async () => {
     const newPost = await postService().createPost({
       photoUrl: imageURL,
@@ -70,8 +77,7 @@ export default function RecordImage({propsDoModal, onClose}) {
 
     if (newPost) handleUpdatePosts(newPost)
 
-    setActiveStep(0)
-    onClose()
+    resetAllState()
   }
 
   if (!data) return <p>Carregando...</p>
@@ -165,6 +171,7 @@ export default function RecordImage({propsDoModal, onClose}) {
                 fullWidth
                 variant="primary.main"
                 onClick={handleCreatePost}
+                disabled={!filter}
               >
                 Postar
               </Button>
