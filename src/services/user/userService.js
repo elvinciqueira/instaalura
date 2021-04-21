@@ -16,6 +16,7 @@ export const userService = {
           authorization: `Bearer ${token}`,
         },
       })
+
       return {
         user: {
           totalLikes: 100,

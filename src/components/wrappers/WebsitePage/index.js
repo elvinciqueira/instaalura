@@ -40,6 +40,7 @@ export default function WebsitePageWrapper({
       value={{
         toggleModalCadastro,
         toggleModalRecordImage,
+        isModalRecordImageOpen,
         getCMSContent,
       }}
     >
@@ -55,7 +56,12 @@ export default function WebsitePageWrapper({
         </Modal>
 
         <Modal isOpen={isModalRecordImageOpen} onClose={toggleModalRecordImage}>
-          {(propsDoModal) => <RecordImage propsDoModal={propsDoModal} />}
+          {(propsDoModal) => (
+            <RecordImage
+              propsDoModal={propsDoModal}
+              onClose={toggleModalRecordImage}
+            />
+          )}
         </Modal>
 
         {children}

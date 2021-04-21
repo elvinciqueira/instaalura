@@ -71,7 +71,7 @@ export const ButtonModal = styled.button`
 
 export const ContentWrapper = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: ${({theme}) =>
     theme.colors.modes[theme.mode].background.light.color};
 `

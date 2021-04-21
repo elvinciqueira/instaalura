@@ -1,11 +1,15 @@
 import React from 'react'
 import {Logo} from '../../../theme/Logo'
 import {FiHome, FiHeart, FiSearch} from 'react-icons/fi'
+import useSWR from 'swr'
 
 import {Grid} from '../../foundation/layout/Grid'
+import {Box} from '../../foundation/layout/Box'
 import {Flex} from '../../foundation/layout/Flex'
 import Typography from '../../foundation/Typography'
 import {WebsitePageContext} from '../../wrappers/WebsitePage/index'
+
+import {postService} from '../../../services/post/postService'
 
 import {
   Avatar,
@@ -16,10 +20,16 @@ import {
   ProfileAvatar,
 } from './styles'
 
-export default function ProfileScreen() {
+export default function ProfileScreen(props) {
+  const {data, error} = useSWR(
+    'https://instalura-api.vercel.app/api/users/posts',
+    postService().getPosts,
+  )
+
   const websitePageContext = React.useContext(WebsitePageContext)
 
-  console.log(websitePageContext)
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
 
   const handleOpenModal = () => websitePageContext.toggleModalRecordImage()
 
@@ -134,9 +144,31 @@ export default function ProfileScreen() {
             </Grid.Col>
           </Grid.Row>
         </Grid.Container>
-      </ContentWrapper>
 
-      {/* <Feed /> */}
+        <Grid.Container marginTop="64px">
+          <Grid.Row>
+            {data.map((post) => (
+              <Grid.Col
+                offset={{xs: 0, md: 1}}
+                key={post._id}
+                value={{xs: 4, md: 3}}
+              >
+                <Box
+                  cursor="pointer"
+                  marginTop="32px"
+                  className={post.filter}
+                  width={{xs: '112px', md: '250px'}}
+                  height={{xs: '112px', md: '250px'}}
+                  backgroundImage={`url(${post.photoUrl})`}
+                  backgroundSize="cover"
+                  backgroundPosition="center"
+                  backgroundRepeat="no-repeat"
+                />
+              </Grid.Col>
+            ))}
+          </Grid.Row>
+        </Grid.Container>
+      </ContentWrapper>
     </Wrapper>
   )
 }

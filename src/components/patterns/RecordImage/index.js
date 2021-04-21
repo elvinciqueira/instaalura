@@ -10,6 +10,8 @@ import {useTheme} from '../../../infra/hooks/theme/useTheme'
 import {FiArrowRight} from 'react-icons/fi'
 import {instagramFilters} from '../../../theme/instagramFilters'
 
+import {postService} from '../../../services/post/postService'
+
 function FormContent({setImageURL, imageURL}) {
   const inputRef = React.createRef()
 
@@ -47,12 +49,24 @@ function FormContent({setImageURL, imageURL}) {
   )
 }
 
-export default function RecordImage({propsDoModal}) {
+export default function RecordImage({propsDoModal, onClose}) {
   const {currentMode} = useTheme()
 
   const [activeStep, setActiveStep] = useState(0)
   const [imageURL, setImageURL] = useState('')
   const [filter, setFilter] = useState('')
+
+  const handleSendPost = async () => {
+    const ok = await postService().createPost({
+      photoUrl: imageURL,
+      description: 'a wholesome post',
+      filter,
+    })
+
+    if (ok) {
+      onClose()
+    }
+  }
 
   return (
     <Grid.Row
@@ -137,14 +151,26 @@ export default function RecordImage({propsDoModal}) {
               </Flickity>
             )}
 
-            <Button
-              marginTop="64px"
-              fullWidth
-              variant="primary.main"
-              onClick={() => setActiveStep(activeStep + 1)}
-            >
-              Avançar
-            </Button>
+            {activeStep === 1 ? (
+              <Button
+                marginTop="64px"
+                fullWidth
+                variant="primary.main"
+                onClick={handleSendPost}
+              >
+                Postar
+              </Button>
+            ) : (
+              <Button
+                marginTop="64px"
+                fullWidth
+                disabled={!imageURL}
+                variant="primary.main"
+                onClick={() => setActiveStep(activeStep + 1)}
+              >
+                Avançar
+              </Button>
+            )}
           </Box>
         </Box>
       </Grid.Col>
