@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components'
-import {breakPointsMedia} from '../../../../theme/utils/breakPointsMedia'
+import {breakPointsMedia} from '../../../../../theme/utils/breakPointsMedia'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -71,7 +71,7 @@ export const ButtonModal = styled.button`
 
 export const ContentWrapper = styled.section`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: ${({theme}) =>
     theme.colors.modes[theme.mode].background.light.color};
 `

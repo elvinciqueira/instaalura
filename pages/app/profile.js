@@ -1,5 +1,5 @@
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc'
-import ProfileScreen from '../../src/components/screens/ProfileScreen'
+import ProfileScreen from '../../src/components/screens/app/ProfileScreen'
 
 import {authService} from '../../src/services/auth/authService'
 import {userService} from '../../src/services/user/userService'

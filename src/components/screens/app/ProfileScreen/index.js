@@ -1,15 +1,15 @@
 import React from 'react'
-import {Logo} from '../../../theme/Logo'
+import {Logo} from '../../../../theme/Logo'
 import {FiHome, FiHeart, FiSearch} from 'react-icons/fi'
 import useSWR from 'swr'
 
-import {Grid} from '../../foundation/layout/Grid'
-import {Box} from '../../foundation/layout/Box'
-import {Flex} from '../../foundation/layout/Flex'
-import Typography from '../../foundation/Typography'
-import {WebsitePageContext} from '../../wrappers/WebsitePage/index'
+import {Grid} from '../../../foundation/layout/Grid'
+import {Box} from '../../../foundation/layout/Box'
+import {Flex} from '../../../foundation/layout/Flex'
+import Typography from '../../../foundation/Typography'
+import {WebsitePageContext} from '../../../wrappers/WebsitePage/index'
 
-import {postService} from '../../../services/post/postService'
+import {postService} from '../../../../services/post/postService'
 
 import {
   Avatar,
@@ -36,7 +36,7 @@ export default function ProfileScreen({user}) {
           <Logo />
         </Header.LeftSide>
 
-        <Header.RightSide>
+        <Header.RightSide id="header">
           <FiSearch />
 
           <ButtonModal
@@ -150,6 +150,7 @@ export default function ProfileScreen({user}) {
                 value={{xs: 4, md: 3}}
               >
                 <Box
+                  id="feed-image"
                   cursor="pointer"
                   marginTop="32px"
                   className={post.filter}

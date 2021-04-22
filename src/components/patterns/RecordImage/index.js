@@ -23,7 +23,11 @@ function FormContent({setImageURL, imageURL}) {
   }
 
   return (
-    <form style={{position: 'relative'}} onSubmit={handleSubmit}>
+    <form
+      id="formRecordImage"
+      style={{position: 'relative'}}
+      onSubmit={handleSubmit}
+    >
       <TextField
         ref={inputRef}
         placeholder="URL da Imagem"
@@ -113,6 +117,7 @@ export default function RecordImage({propsDoModal, onClose}) {
         >
           <propsDoModal.CloseButton />
           <Box
+            id="image-preview"
             className={filter}
             width="100%"
             flex={1}
@@ -167,6 +172,8 @@ export default function RecordImage({propsDoModal, onClose}) {
 
             {activeStep === 1 ? (
               <Button
+                id="postButton"
+                type="button"
                 marginTop="64px"
                 fullWidth
                 variant="primary.main"
@@ -177,6 +184,8 @@ export default function RecordImage({propsDoModal, onClose}) {
               </Button>
             ) : (
               <Button
+                id="nextStepButton"
+                type="button"
                 marginTop="64px"
                 fullWidth
                 disabled={!imageURL}
