@@ -15,9 +15,12 @@ export const postService = () => {
   const token = cookies[LOGIN_COOKIE_APP_TOKEN]
 
   return {
-    async createPost({photoUrl, description, filter}) {
+    async createPost(
+      {photoUrl, description, filter},
+      HttpClientModule = HttpClient,
+    ) {
       try {
-        const response = await HttpClient(`${BASE_URL}/api/posts`, {
+        const response = await HttpClientModule(`${BASE_URL}/api/posts`, {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -28,18 +31,18 @@ export const postService = () => {
             filter,
           },
         })
-        console.log('response', response)
+
         return response.data
-      } catch (e) {
-        throw new Error(e)
+      } catch (err) {
+        throw new Error(err)
       }
     },
 
-    async getPosts(path) {
+    async getPosts(path, HttpClientModule = HttpClient) {
       try {
         const url = `${BASE_URL}/${path}`
 
-        const response = await HttpClient(url, {
+        const response = await HttpClientModule(url, {
           headers: {
             authorization: `Bearer ${token}`,
           },
