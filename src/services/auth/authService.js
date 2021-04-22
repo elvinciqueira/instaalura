@@ -10,16 +10,20 @@ const BASE_URL = isStagingEnv
   : // Back End de PROD
     'https://instalura-api.omariosouto.vercel.app'
 
-export const authService = (ctx) => {
-  const cookies = parseCookies(ctx)
+export const authService = (ctx, parseCookiesModule = parseCookies) => {
+  const cookies = parseCookiesModule(ctx)
   const token = cookies[LOGIN_COOKIE_APP_TOKEN]
 
   return {
     async getToken() {
       return token
     },
-    async hasActiveSession() {
-      return HttpClient(`${BASE_URL}/api/auth`, {
+
+    async hasActiveSession(
+      HttpClientModule = HttpClient,
+      loginServiceModule = loginService,
+    ) {
+      return HttpClientModule(`${BASE_URL}/api/auth`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -30,16 +34,17 @@ export const authService = (ctx) => {
             return true
           }
 
-          loginService.logout(ctx)
+          loginServiceModule.logout(ctx)
           return false
         })
         .catch(() => {
-          loginService.logout(ctx)
+          loginServiceModule.logout(ctx)
           return false
         })
     },
-    async getSession() {
-      const session = jwt.decode(token)
+
+    async getSession(jwtModule = jwt) {
+      const session = jwtModule.decode(token)
       return session.user
     },
   }
