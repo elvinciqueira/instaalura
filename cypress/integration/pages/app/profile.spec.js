@@ -9,9 +9,6 @@ describe('/pages/app/profile', () => {
       describe('when user click on "+" button', () => {
         it('opens a modal and should add an image to the feed', () => {
           //Pré Teste
-          cy.intercept('https://instalura-api.vercel.app/api/posts').as(
-            'userPost',
-          )
           const imageUrl =
             'https://images.unsplash.com/photo-1577548696089-f7bcbc22f70e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80'
 
