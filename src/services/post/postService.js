@@ -34,7 +34,7 @@ export const postService = () => {
 
         return response.data
       } catch (err) {
-        throw new Error(err)
+        throw new Error('Não foi possível criar um novo post')
       }
     },
 
@@ -50,7 +50,7 @@ export const postService = () => {
 
         return response.data
       } catch (e) {
-        throw new Error(e)
+        throw new Error('Não foi possível pegar os posts')
       }
     },
   }

@@ -12,7 +12,13 @@ async function HttpClientModule() {
   }
 }
 
+const HttpClientModuleError = jest.fn()
+
 describe('postService', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   describe('createPost()', () => {
     describe('when user create a new post', () => {
       describe('and succeed', () => {
@@ -31,6 +37,29 @@ describe('postService', () => {
         })
       })
     })
+
+    describe('and fails', () => {
+      test('throws an error', async () => {
+        HttpClientModuleError.mockImplementationOnce(() =>
+          Promise.reject('Não foi possível criar o post'),
+        )
+
+        try {
+          await postService().createPost(
+            {
+              photoUrl: 'image-url',
+              description: 'awesome description',
+              filter: 'instagram-filter',
+            },
+            HttpClientModuleError,
+          )
+        } catch (error) {
+          expect(error).toMatchSnapshot()
+        }
+
+        expect(HttpClientModuleError).toHaveBeenCalledTimes(1)
+      })
+    })
   })
 
   describe('getPosts()', () => {
@@ -44,6 +73,25 @@ describe('postService', () => {
           )
 
           expect(response).toEqual(responseData)
+        })
+      })
+
+      describe('and fails', () => {
+        test('throws an error', async () => {
+          HttpClientModuleError.mockImplementationOnce(() =>
+            Promise.reject('Não foi possível carregar os posts'),
+          )
+
+          try {
+            await postService().getPosts(
+              'api/users/post',
+              HttpClientModuleError,
+            )
+          } catch (error) {
+            expect(error).toMatchSnapshot()
+          }
+
+          expect(HttpClientModuleError).toHaveBeenCalledTimes(1)
         })
       })
     })

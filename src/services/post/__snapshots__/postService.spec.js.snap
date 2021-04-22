@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`postService createPost() and fails throws an error 1`] = `[Error: Não foi possível criar um novo post]`;
+
+exports[`postService getPosts() when user try to get new posts and fails throws an error 1`] = `[Error: Não foi possível pegar os posts]`;
