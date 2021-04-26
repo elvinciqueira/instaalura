@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Box /> backgroundImage, backgroundPosition, backgroundSize, backgroundRepeat 1`] = `
+.c0 {
+  background-image: url(some-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`<Box /> borderRadiusTheme props sets theme border-radius 1`] = `
+.c0 {
+  border-radius: 8px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`<Box /> boxShadow props set box-shadow 1`] = `
+.c0 {
+  box-shadow: -10px 0px 24px rgba(7,12,14,0.1);
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`<Box /> color props sets color 1`] = `
+.c0 {
+  color: #D7385E;
+}
+
+<div
+  className="c0"
+  color="primary.main"
+/>
+`;
+
+exports[`<Box /> flex props set flex 1`] = `
+.c0 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`<Box /> marginTop, marginRight, marginBottom, marginLeft 1`] = `
+.c0 {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`<Box /> padding props sets padding 1`] = `
+.c0 {
+  padding: 12px 16px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`<Box /> renders 1`] = `
+<div
+  className=""
+/>
+`;

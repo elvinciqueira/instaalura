@@ -115,6 +115,7 @@ export default {
   colors,
   borderRadius: '8px',
   typographyVariants,
+  mode: 'light',
   fontFamily: "'Rubik', sans-serif",
   transition: '200ms ease-in-out',
 }
