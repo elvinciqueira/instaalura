@@ -33,6 +33,7 @@
     "react-flickity-component": "^3.6.1",
     "react-icons": "^4.2.0",
     "react-is": "^16.8.0",
+    "react-test-renderer": "^17.0.2",
     "styled-components": "^5.0.0",
     "styled-normalize": "^8.0.7",
     "swr": "^0.5.5",
