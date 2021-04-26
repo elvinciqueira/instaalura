@@ -4,7 +4,7 @@ import theme from '../../../theme'
 
 describe('<Link />', () => {
   test('render correctly with default style', () => {
-    const tree = render(<Link href="/">link</Link>)
+    render(<Link href="/">link</Link>)
     
     const link = screen.getByRole('link', { name: /link/i})
 
