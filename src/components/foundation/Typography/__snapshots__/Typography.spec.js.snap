@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Typography /> marginTop, marginRight, marginBottom, marginLeft 1`] = `
+.c0 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+<span
+  className="c0"
+  href=""
+/>
+`;
+
+exports[`<Typography /> text variants when compoenet renders without variant props it applies default styles 1`] = `
+.c0 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+<span
+  className="c0"
+  href=""
+/>
+`;
+
+exports[`<Typography /> text variants when variant="paragraph1" renders with proper font-size 1`] = `
+.c0 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+<span
+  className="c0"
+  href=""
+/>
+`;
+
+exports[`<Typography /> text variants when variant="paragraph2" renders with proper font-size 1`] = `
+.c0 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+<span
+  className="c0"
+  href=""
+/>
+`;
+
+exports[`<Typography /> text variants when variant="smallestException" renders with proper style variant 1`] = `
+.c0 {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+<span
+  className="c0"
+  href=""
+/>
+`;
+
+exports[`<Typography /> text variants when variant="subTitle" renders with proper font-size 1`] = `
+.c0 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+<span
+  className="c0"
+  href=""
+/>
+`;
+
+exports[`<Typography /> text variants when variant="title" renders with proper font-size 1`] = `
+.c0 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+<span
+  className="c0"
+  href=""
+/>
+`;
+
+exports[`<Typography /> text variants when variant="titleXS" renders with proper font-size 1`] = `
+.c0 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+<span
+  className="c0"
+  href=""
+/>
+`;
+
+exports[`<Typography /> textAlign props sets text-align 1`] = `
+.c0 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+}
+
+<span
+  className="c0"
+  href=""
+/>
+`;
