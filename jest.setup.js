@@ -8,4 +8,4 @@ import '@testing-library/jest-dom' // Traz expects decentes para lidar com style
 import renderer from 'react-test-renderer'
 
 global.rendererCreateWithTheme = (Tree) =>
-  renderer.create(<WebsiteGlobalProvider theme={createTheme()}>{Tree}</WebsiteGlobalProvider>)
+  renderer.create(<WebsiteGlobalProvider>{Tree}</WebsiteGlobalProvider>)
