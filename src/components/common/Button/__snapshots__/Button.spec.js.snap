@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> render with no props 1`] = `
+.c0 {
+  border: 0;
+  cursor: pointer;
+  padding: 12px 26px;
+  font-weight: bold;
+  opacity: 1;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+  border-radius: 8px;
+}
+
+.c0:hover,
+.c0:focus {
+  opacity: 0.5;
+}
+
+.c0:disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+@media only screen and (min-width:0px) {
+  .c0 {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c0 {
+    padding: 12px 43px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+}
+
+<button
+  class="c0"
+>
+  BUTTON
+</button>
+`;
