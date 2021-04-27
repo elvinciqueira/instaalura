@@ -6,8 +6,10 @@ describe('<Typography />', () => {
   describe('text variants', () => {
     describe('when variant="title"', () => {
       test('renders with proper font-size', () => {
-        const tree = rendererCreateWithTheme(<Typography variant="title"/>).toJSON()
-  
+        const tree = rendererCreateWithTheme(
+          <Typography variant="title" />,
+        ).toJSON()
+
         expect(tree).toMatchSnapshot()
         expect(tree).toHaveStyleRule('font-size', '32px')
         expect(tree).toHaveStyleRule('font-weight', '700')
@@ -17,8 +19,10 @@ describe('<Typography />', () => {
 
     describe('when variant="titleXS"', () => {
       test('renders with proper font-size', () => {
-        const tree = rendererCreateWithTheme(<Typography variant="titleXS"/>).toJSON()
-  
+        const tree = rendererCreateWithTheme(
+          <Typography variant="titleXS" />,
+        ).toJSON()
+
         expect(tree).toMatchSnapshot()
         expect(tree).toHaveStyleRule('font-size', '24px')
         expect(tree).toHaveStyleRule('font-weight', '500')
@@ -27,8 +31,10 @@ describe('<Typography />', () => {
     })
     describe('when variant="subTitle"', () => {
       test('renders with proper font-size', () => {
-        const tree = rendererCreateWithTheme(<Typography variant="subTitle"/>).toJSON()
-  
+        const tree = rendererCreateWithTheme(
+          <Typography variant="subTitle" />,
+        ).toJSON()
+
         expect(tree).toMatchSnapshot()
         expect(tree).toHaveStyleRule('font-size', '24px')
         expect(tree).toHaveStyleRule('font-weight', '500')
@@ -38,8 +44,10 @@ describe('<Typography />', () => {
 
     describe('when variant="paragraph1"', () => {
       test('renders with proper font-size', () => {
-        const tree = rendererCreateWithTheme(<Typography variant="paragraph1"/>).toJSON()
-  
+        const tree = rendererCreateWithTheme(
+          <Typography variant="paragraph1" />,
+        ).toJSON()
+
         expect(tree).toMatchSnapshot()
         expect(tree).toHaveStyleRule('font-size', '16px')
         expect(tree).toHaveStyleRule('font-weight', '400')
@@ -49,19 +57,23 @@ describe('<Typography />', () => {
 
     describe('when variant="paragraph2"', () => {
       test('renders with proper font-size', () => {
-        const tree = rendererCreateWithTheme(<Typography variant="paragraph2"/>).toJSON()
-  
+        const tree = rendererCreateWithTheme(
+          <Typography variant="paragraph2" />,
+        ).toJSON()
+
         expect(tree).toMatchSnapshot()
         expect(tree).toHaveStyleRule('font-size', '14px')
         expect(tree).toHaveStyleRule('font-weight', '400')
         expect(tree).toHaveStyleRule('line-height', '1.25')
       })
     })
-    
+
     describe('when variant="smallestException"', () => {
       test('renders with proper style variant', () => {
-        const tree = rendererCreateWithTheme(<Typography variant="smallestException"/>).toJSON()
-  
+        const tree = rendererCreateWithTheme(
+          <Typography variant="smallestException" />,
+        ).toJSON()
+
         expect(tree).toMatchSnapshot()
         expect(tree).toHaveStyleRule('font-size', '12px')
         expect(tree).toHaveStyleRule('font-weight', '400')
@@ -73,7 +85,7 @@ describe('<Typography />', () => {
       test('it renders as a anchor element', () => {
         render(<Typography href="/">LINK</Typography>)
 
-        const link = screen.getByRole('link', { name: /link/i})
+        const link = screen.getByRole('link', {name: /link/i})
 
         expect(link).toBeInstanceOf(HTMLAnchorElement)
         expect(link).toBeInTheDocument()
@@ -83,7 +95,7 @@ describe('<Typography />', () => {
     describe('when compoenet renders without variant props', () => {
       test('it applies default styles', () => {
         const tree = rendererCreateWithTheme(<Typography />).toJSON()
-  
+
         expect(tree).toMatchSnapshot()
         expect(tree).toHaveStyleRule('font-size', '16px')
         expect(tree).toHaveStyleRule('font-weight', '400')
@@ -91,7 +103,7 @@ describe('<Typography />', () => {
       })
     })
   })
-  
+
   test('textAlign props sets text-align', () => {
     const tree = rendererCreateWithTheme(
       <Typography textAlign="center" />,
@@ -103,12 +115,12 @@ describe('<Typography />', () => {
 
   test('marginTop, marginRight, marginBottom, marginLeft', () => {
     const tree = rendererCreateWithTheme(
-      <Typography 
-        marginTop="10px" 
+      <Typography
+        marginTop="10px"
         marginLeft="20px"
         marginRight="20px"
         marginBottom="10px"
-      />
+      />,
     ).toJSON()
 
     expect(tree).toMatchSnapshot()
