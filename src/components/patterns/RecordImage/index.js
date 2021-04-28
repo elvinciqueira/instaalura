@@ -36,6 +36,14 @@ function FormContent({setImageURL, imageURL}) {
         name="image_url"
         fullWidth
       />
+      <Typography
+        tag="p"
+        variant="paragraph2"
+        color="tertiary.light"
+        textAlign="center"
+      >
+        Formatos suportados: jpg, png, svg e xpto
+      </Typography>
       <Button
         position="absolute"
         variant="secondary.main"
@@ -128,20 +136,15 @@ export default function RecordImage({propsDoModal, onClose}) {
             backgroundPosition="center"
           />
 
-          <Box padding="32px">
+          <Box
+            padding="32px"
+            flex={1}
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+          >
             {activeStep === 0 && (
-              <>
-                <FormContent setImageURL={setImageURL} imageURL={imageURL} />
-
-                <Typography
-                  tag="p"
-                  variant="paragraph2"
-                  color="tertiary.light"
-                  textAlign="center"
-                >
-                  Formatos suportados: jpg, png, svg e xpto
-                </Typography>
-              </>
+              <FormContent setImageURL={setImageURL} imageURL={imageURL} />
             )}
 
             {activeStep === 1 && (
@@ -174,7 +177,7 @@ export default function RecordImage({propsDoModal, onClose}) {
               <Button
                 id="postButton"
                 type="button"
-                marginTop="64px"
+                marginTop="32px"
                 fullWidth
                 variant="primary.main"
                 onClick={handleCreatePost}
@@ -186,7 +189,7 @@ export default function RecordImage({propsDoModal, onClose}) {
               <Button
                 id="nextStepButton"
                 type="button"
-                marginTop="64px"
+                marginTop="32px"
                 fullWidth
                 disabled={!imageURL}
                 variant="primary.main"
