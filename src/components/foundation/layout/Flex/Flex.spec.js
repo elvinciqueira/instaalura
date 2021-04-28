@@ -13,7 +13,9 @@ describe('<Flex />', () => {
   })
 
   test('justifyContent props set justify-content', () => {
-    const flex = rendererCreateWithTheme(<Flex justifyContent="center" />).toJSON()
+    const flex = rendererCreateWithTheme(
+      <Flex justifyContent="center" />,
+    ).toJSON()
     expect(flex).toMatchSnapshot()
     expect(flex).toHaveStyleRule('justify-content', 'center')
   })

@@ -1,19 +1,21 @@
 import {userService} from './userService'
 
-const posts = [{
-  _id: 'fake-id',
-  photoUrl: 'image-url',
-  filter: 'instagram-filter',
-  description: 'awesome description'
-}]
-
+const posts = [
+  {
+    _id: 'fake-id',
+    photoUrl: 'image-url',
+    filter: 'instagram-filter',
+    description: 'awesome description',
+  },
+]
 
 const authServiceModule = jest.fn(() => ({
-  getToken: jest.fn(() => 'fake-token')
+  getToken: jest.fn(() => 'fake-token'),
 }))
 
-const HttpClientModule = jest.fn()
-  .mockImplementationOnce(() => Promise.resolve({ data: posts}))
+const HttpClientModule = jest
+  .fn()
+  .mockImplementationOnce(() => Promise.resolve({data: posts}))
 
 describe('userService', () => {
   describe('getProfilePage()', () => {
@@ -21,18 +23,24 @@ describe('userService', () => {
       it('returns user profile data', async () => {
         const expectedResponseData = {
           user: {
-            totalLikes: 100
+            totalLikes: 100,
           },
-          posts: [{
-            _id: 'fake-id',
-            photoUrl: 'image-url',
-            filter: 'instagram-filter',
-            description: 'awesome description'
-          }]
+          posts: [
+            {
+              _id: 'fake-id',
+              photoUrl: 'image-url',
+              filter: 'instagram-filter',
+              description: 'awesome description',
+            },
+          ],
         }
         const expectedToken = 'fake-token'
-        
-        const profilePage = await userService.getProfilePage(null, HttpClientModule, authServiceModule)
+
+        const profilePage = await userService.getProfilePage(
+          null,
+          HttpClientModule,
+          authServiceModule,
+        )
 
         expect(HttpClientModule).toHaveBeenCalledTimes(1)
         expect(authServiceModule).toHaveBeenCalledTimes(1)
@@ -44,7 +52,7 @@ describe('userService', () => {
     describe('when token is invalid', () => {
       it('throws an error', async () => {
         expect.assertions(1)
-        
+
         try {
           await userService.getProfilePage(null, HttpClientModule)
         } catch (error) {

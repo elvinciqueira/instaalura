@@ -10,12 +10,12 @@ describe('<Box />', () => {
 
   test('backgroundImage, backgroundPosition, backgroundSize, backgroundRepeat', () => {
     const box = rendererCreateWithTheme(
-      <Box 
-        backgroundImage="url(some-image)" 
+      <Box
+        backgroundImage="url(some-image)"
         backgroundRepeat="no-repeat"
         backgroundPosition="center"
         backgroundSize="cover"
-      />
+      />,
     ).toJSON()
 
     expect(box).toMatchSnapshot()
@@ -27,12 +27,12 @@ describe('<Box />', () => {
 
   test('marginTop, marginRight, marginBottom, marginLeft', () => {
     const box = rendererCreateWithTheme(
-      <Box 
-        marginTop="10px" 
+      <Box
+        marginTop="10px"
         marginLeft="20px"
         marginRight="20px"
         marginBottom="10px"
-      />
+      />,
     ).toJSON()
 
     expect(box).toMatchSnapshot()
@@ -43,11 +43,7 @@ describe('<Box />', () => {
   })
 
   test('flex props set flex', () => {
-    const box = rendererCreateWithTheme(
-      <Box 
-        flex={1}
-      />
-    ).toJSON()
+    const box = rendererCreateWithTheme(<Box flex={1} />).toJSON()
 
     expect(box).toMatchSnapshot()
     expect(box).toHaveStyleRule('flex', '1')
@@ -61,15 +57,14 @@ describe('<Box />', () => {
   })
 
   test('color props sets color', () => {
-    const variant = "primary.main"
-    const box = rendererCreateWithTheme(
-      <Box 
-        color={variant}
-      />
-    ).toJSON()
+    const variant = 'primary.main'
+    const box = rendererCreateWithTheme(<Box color={variant} />).toJSON()
 
     expect(box).toMatchSnapshot()
-    expect(box).toHaveStyleRule('color', get(theme, `colors.modes.${theme.mode}.${variant}.color`))
+    expect(box).toHaveStyleRule(
+      'color',
+      get(theme, `colors.modes.${theme.mode}.${variant}.color`),
+    )
   })
 
   test('borderRadiusTheme props sets theme border-radius', () => {
@@ -81,12 +76,13 @@ describe('<Box />', () => {
 
   test('boxShadow props set box-shadow', () => {
     const box = rendererCreateWithTheme(
-      <Box 
-        boxShadow="-10px 0px 24px rgba(7, 12, 14, 0.1)"
-      />
+      <Box boxShadow="-10px 0px 24px rgba(7, 12, 14, 0.1)" />,
     ).toJSON()
 
     expect(box).toMatchSnapshot()
-    expect(box).toHaveStyleRule('box-shadow', '-10px 0px 24px rgba(7,12,14,0.1)')
+    expect(box).toHaveStyleRule(
+      'box-shadow',
+      '-10px 0px 24px rgba(7,12,14,0.1)',
+    )
   })
 })
