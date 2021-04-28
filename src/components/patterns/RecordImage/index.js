@@ -138,7 +138,6 @@ export default function RecordImage({propsDoModal, onClose}) {
 
           <Box
             padding="32px"
-            flex={1}
             width="100%"
             display="flex"
             flexDirection="column"
