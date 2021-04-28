@@ -2,12 +2,14 @@ import React from 'react'
 import {Logo} from '../../../../theme/Logo'
 import {FiHome, FiHeart, FiSearch} from 'react-icons/fi'
 import useSWR from 'swr'
+import {Lottie} from '@crello/react-lottie'
 
 import {Grid} from '../../../foundation/layout/Grid'
 import {Box} from '../../../foundation/layout/Box'
 import {Flex} from '../../../foundation/layout/Flex'
 import Typography from '../../../foundation/Typography'
 import {WebsitePageContext} from '../../../wrappers/WebsitePage/index'
+import likedButton from './animations/like-button.json'
 
 import {postService} from '../../../../services/post/postService'
 
@@ -24,7 +26,16 @@ export default function ProfileScreen({user}) {
   const websitePageContext = React.useContext(WebsitePageContext)
   const {data, error} = useSWR('api/users/posts', postService().getPosts)
 
+  const [liked, setLiked] = React.useState(false)
+
   const handleOpenModal = () => websitePageContext.toggleModalRecordImage()
+
+  const handleLikeDislike = async (postId) => {
+    setLiked(true)
+    const ok = await postService().likeDislike(postId)
+
+    if (ok) setLiked(false)
+  }
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
@@ -153,6 +164,9 @@ export default function ProfileScreen({user}) {
                   id="feed-image"
                   cursor="pointer"
                   marginTop="32px"
+                  position="relative"
+                  onClick={() => handleLikeDislike(post._id)}
+                  hover
                   className={post.filter}
                   width={{xs: '112px', md: '250px'}}
                   height={{xs: '112px', md: '250px'}}
@@ -160,7 +174,33 @@ export default function ProfileScreen({user}) {
                   backgroundSize="cover"
                   backgroundPosition="center"
                   backgroundRepeat="no-repeat"
-                />
+                >
+                  <Flex
+                    justifyContent="center"
+                    alignItems="center"
+                    position="absolute"
+                    flexDirection="column"
+                    left="0"
+                    right="0"
+                    top={{xs: '29%', md: '45%'}}
+                    marginLeft="auto"
+                    marginRight="auto"
+                  >
+                    {!liked ? (
+                      <FiHeart size={24} />
+                    ) : (
+                      <Lottie
+                        width="50px"
+                        height="50px"
+                        config={{
+                          animationData: likedButton,
+                          loop: false,
+                          autoplay: true,
+                        }}
+                      />
+                    )}
+                  </Flex>
+                </Box>
               </Grid.Col>
             ))}
           </Grid.Row>

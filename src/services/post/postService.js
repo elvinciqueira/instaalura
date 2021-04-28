@@ -38,6 +38,21 @@ export const postService = () => {
       }
     },
 
+    async likeDislike(postId, HttpClientModule = HttpClient) {
+      const response = await HttpClientModule(
+        `${BASE_URL}/api/posts/${postId}/like`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: {},
+        },
+      )
+
+      return response.data
+    },
+
     async getPosts(path, HttpClientModule = HttpClient) {
       try {
         const url = `${BASE_URL}/${path}`

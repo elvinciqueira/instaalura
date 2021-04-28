@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {propToStyle} from '../../../../theme/utils/propToStyle'
 import Bubbles from '../../../../theme/Bubbles'
 import get from 'lodash/get'
@@ -44,4 +44,22 @@ export const Box = styled.div`
   ${({theme, backgroundImageTheme}) =>
     backgroundImageTheme &&
     `background-image: url(${Bubbles.url(theme.mode)})`};
+
+  ${({hover}) =>
+    hover &&
+    css`
+      > div {
+        visibility: hidden;
+      }
+
+      transition: opacity 0.3s;
+
+      &:hover {
+        > div {
+          visibility: visible;
+        }
+
+        opacity: 0.6;
+      }
+    `}
 `
