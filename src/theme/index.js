@@ -27,6 +27,9 @@ export const colors = {
         main: {
           color: '#F1F1F1',
         },
+        light: {
+          color: '#d5d5d5',
+        },
       },
       primary: {
         main: {
@@ -74,6 +77,9 @@ export const colors = {
       },
       borders: {
         main: {
+          color: '#181F22',
+        },
+        light: {
           color: '#181F22',
         },
       },

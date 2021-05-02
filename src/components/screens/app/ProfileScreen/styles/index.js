@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components'
 import {breakPointsMedia} from '../../../../../theme/utils/breakPointsMedia'
+import get from 'lodash/get'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -7,7 +8,11 @@ export const Wrapper = styled.div`
 
 export const Header = styled.header`
   display: flex;
-  background-color: white;
+  background-color: ${({theme}) => {
+    const {mode: currentMode} = theme
+
+    return theme.colors.modes[currentMode].background.main.color
+  }};
   align-items: center;
   ${breakPointsMedia({
     xs: css`
@@ -17,22 +22,25 @@ export const Header = styled.header`
       justify-content: space-around;
     `,
   })}
+
   flex-wrap: wrap;
-  padding: 28px;
-  border-bottom: 1px solid #d5d5d5;
+  padding: 24px 26px;
+  border-bottom: 1px solid
+    ${({theme}) => get(theme, `colors.modes.${theme.mode}.borders.light.color`)};
 
   ${breakPointsMedia({
     xs: css`
       position: fixed;
       bottom: 0;
-      right: 0;
       left: 0;
-      z-index: 1;
+      width: 100%;
+      width: -webkit-fill-available;
+      z-index: 99;
       box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.04);
       border-radius: 24px 24px 0px 0px;
     `,
     md: css`
-      position: unset;
+      position: relative;
     `,
   })}
 `

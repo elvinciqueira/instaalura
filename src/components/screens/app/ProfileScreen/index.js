@@ -10,6 +10,7 @@ import {Flex} from '../../../foundation/layout/Flex'
 import Typography from '../../../foundation/Typography'
 import {WebsitePageContext} from '../../../wrappers/WebsitePage/index'
 import likedButton from './animations/like-button.json'
+import {useTheme} from '../../../../infra/hooks/theme/useTheme'
 
 import {postService} from '../../../../services/post/postService'
 
@@ -23,6 +24,7 @@ import {
 } from './styles'
 
 export default function ProfileScreen({user}) {
+  const {currentMode} = useTheme()
   const websitePageContext = React.useContext(WebsitePageContext)
   const {data, error} = useSWR('api/users/posts', postService().getPosts)
 
@@ -48,7 +50,7 @@ export default function ProfileScreen({user}) {
         </Header.LeftSide>
 
         <Header.RightSide id="header">
-          <FiSearch />
+          <FiSearch color={currentMode === 'dark' ? '#fff' : '#000'} />
 
           <ButtonModal
             type="button"
@@ -60,9 +62,9 @@ export default function ProfileScreen({user}) {
             +
           </ButtonModal>
 
-          <FiHome />
-          <FiHeart />
-          <Avatar />
+          <FiHome color={currentMode === 'dark' ? '#fff' : '#000'} />
+          <FiHeart color={currentMode === 'dark' ? '#fff' : '#000'} />
+          <Avatar color={currentMode === 'dark' ? '#fff' : '#000'} />
         </Header.RightSide>
       </Header>
 
