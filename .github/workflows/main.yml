@@ -82,7 +82,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          install-command: npm install
+          install-command: yarn install
           browser: chrome
           start: yarn test:integration:open 
      
