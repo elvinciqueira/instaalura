@@ -79,10 +79,9 @@ jobs:
       # ####################
 
       # Commands that will run:
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          install-command: yarn install
-          browser: chrome
-          start: yarn test:integration:build
+      - name: Install Packages
+        run: yarn --prefer-offline
+
+      - name: Run Integration Tests
+        run: yarn test:integration:build 
      
