@@ -7,7 +7,8 @@
     "start": "next start",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:integration:open": "cypress open"
+    "test:integration:open": "cypress open",
+    "test:integration:build": "start-server-and-test start https-get://localhost:3000 test:integration:open"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
@@ -37,7 +38,8 @@
     "styled-components": "^5.0.0",
     "styled-normalize": "^8.0.7",
     "swr": "^0.5.5",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "start-server-and-test": "^1.14.0"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.8.0",
