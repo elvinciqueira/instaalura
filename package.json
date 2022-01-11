@@ -7,7 +7,7 @@
     "start": "next start",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:integration:open": "cypress open"
+    "test:integration:open": "cypress open",
     "test:integration:build": "start-server-and-test build/start http-get://localhost:3000"
   },
   "dependencies": {
