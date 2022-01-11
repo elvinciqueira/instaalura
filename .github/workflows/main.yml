@@ -84,5 +84,5 @@ jobs:
         with:
           install-command: yarn install
           browser: chrome
-          start: yarn test:integration:open 
+          start: yarn start
      
